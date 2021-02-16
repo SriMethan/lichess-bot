@@ -1,5 +1,5 @@
-token: "xxxxxxxxxxxxxxxx"    # lichess OAuth2 Token
-url: "https://lichess.org/"  # lichess base URL
+token: "twjebZqy2tJfFcRt"    # lidraughts OAuth2 Token
+url: "https://lidraughts.org/"  # lidraughts base URL
 
 engine:                      # engine settings
   dir: "./engines/"          # dir containing engines, relative to this project
