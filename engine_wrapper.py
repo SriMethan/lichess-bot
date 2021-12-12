@@ -203,3 +203,4 @@ class XBoardEngine(EngineWrapper):
 def getHomemadeEngine(name):
     import strategies
     return eval(f"strategies.{name}")
+
