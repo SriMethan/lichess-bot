@@ -1,3 +1,7 @@
+# MAINTAINERS 
+- [Kingnandi](https://lichess.org/@/drdisrespect1) and [ChessGreatPlayer](https://lichess.org/@/drrespectable)
+
+
 # lichess-bot
 
 Engine communication code taken from https://github.com/ShailChoksi/lichess-bot by [ShailChoksi](https://github.com/ShailChoksi)
