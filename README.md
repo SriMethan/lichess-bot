@@ -30,6 +30,11 @@ Note: You could also `Enable Automatic Deploys` with the `main` branch selected 
 - now your bot playing all variants, But standard is not strongest like stockfish dev (but only standard)
 - you can change (if you need standard but) change this [6th line of config.yml](/config.yml#L6) type on type on `Stockfish_14_Dev` after sure so strongest for standard but not play other variants. again if you need play all variants change this again [6th line of config.yml](/config.yml#L6) type on `fsf` then play all variants 
 
+## If you have any quastion please inform me 
+  
+  [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
+  
+  
    #### ENJOY!!!!!!!!
 
 
