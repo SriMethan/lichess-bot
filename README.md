@@ -21,7 +21,7 @@ Engine communication code taken from https://github.com/ShailChoksi/lichess-bot 
 go to  [create a new app](https://dashboard.heroku.com/new-app) in Heroku. <br/>
 - In heroku, in the `Deploy` tab click on `Connect to GitHub` and then click on `search` and select your fork/import of this repository.
 - Now scroll down and under `Manual deploy`, click on `deploy` with the `master` branch selected. <br/> <br/>
-Note: You could also `Enable Automatic Deploys` with the `master` branch selected if you would like each commit you make to get automatically and easily deployed onto your bot. It is your choice whether you'd like to Enable or Disable Automatic Deploys.
+Note: You could also `Enable Automatic Deploys` with the `main` branch selected if you would like each commit you make to get automatically and easily deployed onto your bot. It is your choice whether you'd like to Enable or Disable Automatic Deploys.
 - After deploying wait for about 5 minutes till the build finishes and then in the `Resources` tab in heroku turn `worker` dynos. If you do not see any option to enable any dynos, then you'll have to wait for about 5 minutes and then refresh your page on heroku.
 
 **You're now connected to lichess and awaiting challenges! Your bot is up and ready!**
