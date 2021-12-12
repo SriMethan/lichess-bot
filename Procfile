@@ -1,1 +1,1 @@
-worker: bash startbot.sh
+worker: bash startpybot.sh
