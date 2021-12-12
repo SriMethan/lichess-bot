@@ -3,10 +3,10 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "stockfish_14_Dev"        # Binary name of the engine to use.
+  name: "stockfish_14_Dev"   # Binary name of the engine to use.
   variantname: "fsf"
   protocol: "uci"            # "uci" or "xboard"
-  ponder: true               # Think on opponent's time.
+  ponder: false              # Think on opponent's time.
   polyglot:
     enabled: true           # Activate polyglot book.
     book:
@@ -19,7 +19,7 @@ engine:                      # Engine settings.
 #      use the same pattern for giveaway, crazyhouse, horde, kingofthehill, racingkings, 3check as well
       min_weight: 100          # selects move with highest weight but not below this value
       selection: "best_move" # move slection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in 2. and 3. case)
-    max_depth: 245             # half move max depth
+    max_depth: 100             # half move max depth
 # engine_options:           # any custom command line params to pass to the engine
 #   cpuct: 3.1
   uci_options:               # arbitrary UCI options passed to the engine
@@ -31,7 +31,7 @@ option name Hash type spin : 32768
 option name Ponder type check : false
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
-option name Move Overhead type spin : 5000
+option name Move Overhead type spin : 2000
 option name nodestime type spin : 0
 option name UCI_Chess960 type check : false
 option name UCI_AnalyseMode type check : false
@@ -39,11 +39,11 @@ option name UCI_LimitStrength type check : false
 option name UCI_Elo type spin : 2850
 option name UCI_ShowWDL type check : false
 option name SyzygyPath type string : <empty>
-option name SyzygyProbeDepth type spin : 100
+option name SyzygyProbeDepth type spin : 1000
 option name Syzygy50MoveRule type check : true
 option name SyzygyProbeLimit type spin : 7
 option name Use NNUE type check : true
-EvalFile: nn-517c4f68b5df.nnue:nn-e94772438c77.nnue
+EvalFile: nn-e94772438c77.nnue
 #    go_commands:             # additional options to pass to the UCI go command
 #      nodes: 5000               # Search so many nodes only.
 #      depth: 20               # Search depth ply only.
@@ -64,21 +64,21 @@ fake_think_time: false       # artificially slow down the bot to pretend like it
 challenge:                   # incoming challenges
   concurrency: 1             # number of games to play simultaneously
   sort_by: "best"            # possible values: "best", "first"
-  accept_bot: true          # accepts challenges coming from other bots
+  accept_bot: true           # accepts challenges coming from other bots
   only_bot: false            # accept challenges by bots only
-  max_increment: 180         # maximum amount of increment to accaept a challenge. the max is 180. set to 0 for no increment
+  max_increment: 60          # maximum amount of increment to accaept a challenge. the max is 180. set to 0 for no increment
   min_increment: 0           # minimum amount of increment to accept a challenge
   variants:                  # chess variants to accept (http://lichess.org/variant)
     - standard
 #   - fromPosition
-#   - antichess
-#   - atomic
+    - antichess
+    - atomic
     - chess960
-#   - crazyhouse
-#   - horde
-#   - kingOfTheHill
-#   - racingKings
-#   - threeCheck
+    - crazyhouse
+    - horde
+    - kingOfTheHill
+    - racingKings
+    - threeCheck
   time_controls:             # time controls to accept
     - bullet
     - blitz
