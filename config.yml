@@ -13,9 +13,9 @@ engine:                      # Engine settings.
       standard:                 # List of book file paths for variant standard.
         - engines/supercode.bin
       antichess:                # List of book file paths for variant antichess.
-        - engines/antichess.bin
+        - engines/antibest.bin
       atomic:                   # List of book file paths for variant atomic.
-        - engines/smartatomic.bin
+        - engines/superatomic.bin
 #     etc.
 #     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
     min_weight: 20           # Does not select moves with weight below min_weight (min 0, max: 65535).
