@@ -4,7 +4,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
   name: "fsf"        # Binary name of the engine to use.
-  sfname: "stockfish_14.1_linux_x64_popcnt"
+  sfname: "stockfish_14_Dev"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
