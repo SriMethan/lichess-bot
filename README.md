@@ -27,6 +27,8 @@ Note: You could also `Enable Automatic Deploys` with the `master` branch selecte
 
 #### How to use stockfish
 - now your bot playing all variants, But standard is not strongest like stockfish dev (but only standard)
-- you can change (if you need standard but) change this [6th line of config.yml](/config.yml#L6) type on type on 'stockfish_14_Dev' after sure so strongest for standard but not play other variants. again if you need play all variants change this again [6th line of config.yml](/config.yml#L6) type on 'fsf' then play all variants 
+- you can change (if you need standard but) change this [6th line of config.yml](/config.yml#L6) type on type on `Stockfish_14_Dev` after sure so strongest for standard but not play other variants. again if you need play all variants change this again [6th line of config.yml](/config.yml#L6) type on `fsf` then play all variants 
+
+   #### ENJOY!!!!!!!!
 
 
