@@ -12,12 +12,13 @@ engine:                      # Engine settings.
     book:
       standard:              # List of book file paths for variant standard.
         - engines/supercode.bin
-#     atomic:                # List of book file paths for variant atomic.
-#       - engines/atomicbook1.bin
-#       - engines/atomicbook2.bin
+      antichess:                # List of book file paths for variant antichess.
+        - engines/antichess.bin
+       atomic:                   # List of book file paths for variant atomic.
+        - engines/smartatomic.bin
 #     etc.
 #     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
-    min_weight: 1            # Does not select moves with weight below min_weight (min 0, max: 65535).
+    min_weight: 65535           # Does not select moves with weight below min_weight (min 0, max: 65535).
     selection: "best_move"   # Move selection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in the 2nd and 3rd case).
     max_depth: 100            # Half move max depth.
 # engine_options:            # Any custom command line params to pass to the engine.
@@ -26,8 +27,10 @@ engine:                      # Engine settings.
 #   Hash: 256  
   uci_options:               # Arbitrary UCI options passed to the engine.
     Move Overhead: 200      # Increase if your bot flags games too often.
-    Threads: 1               # Max CPU threads the engine can use.
+    Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
+    Use NNUE: true           # allow bot to use neural networks
+    EvalFile: janggi-85de3dae670a.nnue: nn-e94772438c77.nnue: 
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
