@@ -1,5 +1,5 @@
 # MAINTAINERS 
-- [Kingnandi](https://lichess.org/@/drdisrespect1) and [ChessGreatPlayer](https://lichess.org/@/drrespectable)
+- [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
 
 
 # lichess-bot
