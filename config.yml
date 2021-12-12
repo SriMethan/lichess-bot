@@ -3,10 +3,10 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "stockfish_14_Dev"        # Binary name of the engine to use.
+  name: "stockfish_14_Dev"   # Binary name of the engine to use.
   variantname: "fsf"
   protocol: "uci"            # "uci" or "xboard"
-  ponder: true               # Think on opponent's time.
+  ponder: false              # Think on opponent's time.
   polyglot:
     enabled: true           # Activate polyglot book.
     book:
@@ -43,7 +43,7 @@ option name SyzygyProbeDepth type spin : 100
 option name Syzygy50MoveRule type check : true
 option name SyzygyProbeLimit type spin : 7
 option name Use NNUE type check : true
-EvalFile: nn-517c4f68b5df.nnue:nn-e94772438c77.nnue
+EvalFile: nn-e94772438c77.nnue
 #    go_commands:             # additional options to pass to the UCI go command
 #      nodes: 5000               # Search so many nodes only.
 #      depth: 20               # Search depth ply only.
@@ -64,21 +64,21 @@ fake_think_time: false       # artificially slow down the bot to pretend like it
 challenge:                   # incoming challenges
   concurrency: 1             # number of games to play simultaneously
   sort_by: "best"            # possible values: "best", "first"
-  accept_bot: true          # accepts challenges coming from other bots
+  accept_bot: true           # accepts challenges coming from other bots
   only_bot: false            # accept challenges by bots only
-  max_increment: 180         # maximum amount of increment to accaept a challenge. the max is 180. set to 0 for no increment
+  max_increment: 60          # maximum amount of increment to accaept a challenge. the max is 180. set to 0 for no increment
   min_increment: 0           # minimum amount of increment to accept a challenge
   variants:                  # chess variants to accept (http://lichess.org/variant)
     - standard
 #   - fromPosition
-#   - antichess
-#   - atomic
+    - antichess
+    - atomic
     - chess960
-#   - crazyhouse
-#   - horde
-#   - kingOfTheHill
-#   - racingKings
-#   - threeCheck
+    - crazyhouse
+    - horde
+    - kingOfTheHill
+    - racingKings
+    - threeCheck
   time_controls:             # time controls to accept
     - bullet
     - blitz
