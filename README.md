@@ -12,7 +12,7 @@ Engine communication code taken from https://github.com/ShailChoksi/lichess-bot 
 -  Using Book [super  book](https://github.com/codingforhelp/Lichess-Bot-Dev/raw/main/engines/supercode.bin)
 
 # lichess-bot
-- A bridge between [Lichess API](https://lichess.org/api#tag/Bot) and bots.
+- A bridge between [Lichess API](https://lichess.org/account/oauth/token/create?scopes%5B%5D=bot:play&description=Lichess+Bot+Token) and bots.
 - This bot is made with Python and it is running using stack container and is concentrated on heroku.
 
 - ## How to Install on Heroku
