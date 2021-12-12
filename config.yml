@@ -29,7 +29,7 @@ engine:                      # Engine settings.
     Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
      Use NNUE: true           # allow bot to use neural networks
-    EvalFile: nn.bin:nn-517c4f68b5df.nnue
+    EvalFile: nn-517c4f68b5df.nnue
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
