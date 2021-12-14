@@ -6,7 +6,7 @@ engine:                      # Engine settings.
   name: "fairy-stockfish"   # Binary name of the engine to use.
   sfname: "stockfish_14_Dev"
   protocol: "uci"            # "uci" or "xboard"
-  ponder: false              # Think on opponent's time.
+  ponder: true              # Think on opponent's time.
   polyglot:
     enabled: true            # Activate polyglot book.
     book:
