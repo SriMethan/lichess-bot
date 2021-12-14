@@ -19,7 +19,7 @@ Engine communication code taken from https://github.com/ShailChoksi/lichess-bot 
 
 - ## How to Install on Heroku
 - Import or [Fork](https://github.com/codingforhelp/Lichess-Bot-Dev) this repository to your Github.
-- Open the `config.yml` file and insert your [API access token](https://lichess.org/account/oauth/token/create?scopes[]=bot:play&description=Lichess+Bot+Token) in to token option and commit changes over [here](/config.yml#L1).
+- Open the `config.yml` file and insert your [API access token](https://lichess.org/account/oauth/token/create?scopes[]=challenge:write&scopes[]=bot:play&scopes[]=challenge:read&description=Lichess+bot+token) in to token option and commit changes over [here](/config.yml#L1).
 go to  [create a new app](https://dashboard.heroku.com/new-app) in Heroku. <br/>
 - In heroku, in the `Deploy` tab click on `Connect to GitHub` and then click on `search` and select your fork/import of this repository.
 - Now scroll down and under `Manual deploy`, click on `deploy` with the `master` branch selected. <br/> <br/>
