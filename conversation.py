@@ -40,6 +40,8 @@ class Conversation:
                 self.send_reply(line, "Challenge queue: {}".format(challengers))
             else:
                 self.send_reply(line, "No challenges queued.")
+        elif cmd == "creator":
+            self.send_reply("@Drdisrespect1 , @DrRespectable ") #edit name in here to apply your lichess name
 
     def send_reply(self, line, reply):
         self.xhr.chat(self.game.id, line.room, reply)
