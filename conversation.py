@@ -42,9 +42,7 @@ class Conversation:
                 self.send_reply(line, "No challenges queued.")
         elif cmd == "creator":
            self.send_reply(line, " @Drdisrespect1 and @DrRespectable ") #edit name here to add your name
-        elif cmd == "about"
-           self.send_reply(line,"using Lichess_Dev-Bot version 1.00")        
-        elif cmd == "evaluation":
+                elif cmd == "evaluation":
             stats = self.engine.get_stats()
            self.send_reply(line, ", ".join(stats))
         elif cmd == "evaluation":
