@@ -42,11 +42,11 @@ class Conversation:
                 self.send_reply(line, "No challenges queued.")
         elif cmd == "creator":
            self.send_reply(line, " @Drdisrespect1 and @DrRespectable ") #edit name here to add your name
-                elif cmd == "evaluation":
-            stats = self.engine.get_stats()
-           self.send_reply(line, ", ".join(stats))
         elif cmd == "evaluation":
-           self.send_reply(line, "That's the evaluation of the position according to my engine! ")
+            stats = self.engine.get_stats()
+            self.send_reply(line, ", ".join(stats))
+        elif cmd == "evaluation":
+            self.send_reply(line, "That's the evaluation of the position according to my engine! ")
 
     def send_reply(self, line, reply):
         self.xhr.chat(self.game.id, line.room, reply)
