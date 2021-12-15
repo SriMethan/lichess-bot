@@ -20,7 +20,7 @@ class Conversation:
 
     def command(self, line, game, cmd):
         if cmd == "commands" or cmd == "help":
-            self.send_reply(line, "Supported commands: !wait, !name, !howto, !eval, !queue, !creator")
+            self.send_reply(line, "Supported commands: !wait, !name, !howto, !eval, !queue, !creator, !about, evaluation")
         elif cmd == "wait" and game.is_abortable():
             game.ping(60, 120)
             self.send_reply(line, "Waiting 60 seconds...")
@@ -42,6 +42,13 @@ class Conversation:
                 self.send_reply(line, "No challenges queued.")
         elif cmd == "creator":
            self.send_reply(line, " @Drdisrespect1 and @DrRespectable ") #edit name here to add your name
+        elif cmd == "about"
+           self.send_reply(line,"using Lichess_Dev-Bot version 1.00")        
+        elif cmd == "evaluation":
+            stats = self.engine.get_stats()
+           self.send_reply(line, ", ".join(stats))
+        elif cmd == "evaluation":
+           self.send_reply(line, "That's the evaluation of the position according to my engine! ")
 
     def send_reply(self, line, reply):
         self.xhr.chat(self.game.id, line.room, reply)
