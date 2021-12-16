@@ -18,9 +18,6 @@ RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Co
 RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/elo3300.bin" -O elo3300.bin
 RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/komodo.bin" -O komodo.bin
 RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/tcec.bin" -O tcec.bin
-RUN wget --no-check-certificate "https://f59.workupload.com/download/E5atKBeeYW8" -O m11-2.bin.7z
-RUN 7z e m11-2.bin.7z
-RUN rm m11-2.bin.7z
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/antichess.bin" -O antichess.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/atomic.bin" -O atomic.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/chess960.bin" -O chess960.bin
