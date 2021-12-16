@@ -13,16 +13,5 @@ RUN wget --no-check-certificate "https://gitlab.com/OIVAS7572/Cerebellum3merge.b
 Run 7z e Cerebellum3Merge.bin.7z
 RUN rm Cerebellum3Merge.bin.7z
 RUN cd -
-RUN apt install python3-pip
-RUN pip install virtualenv
-RUN apt-get install -y python3-venv
-RUN python3 -m venv venv
-RUN virtualenv venv -p python3
-RUN ls
-RUN cd venv
-RUN ls
-RUN cd bin
-RUN ls 
-RUN su activate
 RUN python3 -m pip install -r requirements.txt
 RUN python3 lichess-bot.py -u
