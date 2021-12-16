@@ -18,6 +18,7 @@ RUN pip install virtualenv
 RUN apt-get install -y python3-venv
 RUN python3 -m venv venv
 RUN virtualenv venv -p python3
+RUN ls
 RUN su source ./venv/bin/activate
 RUN python3 -m pip install -r requirements.txt
 RUN python3 lichess-bot.py -u
