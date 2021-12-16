@@ -12,7 +12,7 @@ RUN rm Goi5.1.bin.7z
 RUN wget --no-check-certificate "https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z" -O Cerebellum3Merge.bin.7z
 Run 7z e Cerebellum3Merge.bin.7z
 RUN rm Cerebellum3Merge.bin.7z
-RUN cd ~
+RUN cd -
 RUN apt install python3-pip
 RUN pip install virtualenv
 RUN apt-get install -y python3-venv
