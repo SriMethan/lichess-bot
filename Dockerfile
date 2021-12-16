@@ -20,5 +20,5 @@ RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Co
 RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/tcec.bin" -O tcec.bin
 RUN python3 -m pip install -r requirements.txt
 RUN chmod +x ./engines/stockfish_14_Dev
-RUN python3 lichess-bot.py -u
+RUN python3 lichess-bot.py 
 
