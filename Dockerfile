@@ -14,8 +14,7 @@ Run 7z e Cerebellum3Merge.bin.7z
 RUN rm Cerebellum3Merge.bin.7z
 RUN cd ~
 RUN apt install python3-pip
-RUN pip install virtualenv
-RUN apt install python3-venv
+RUN pip install virtualenv && apt install python3-venv
 RUN python3 -m venv venv
 RUN virtualenv venv -p python3
 RUN source ./venv/bin/activate
