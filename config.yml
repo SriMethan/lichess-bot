@@ -3,7 +3,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fairy-stockfish"   # Binary name of the engine to use.
+  name: "stockfish_14_Dev"   # Binary name of the engine to use.
   sfname: "stockfish_14_Dev"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true              # Think on opponent's time.
@@ -12,6 +12,8 @@ engine:                      # Engine settings.
     book:
       standard:                 # List of book file paths for variant standard.
         - engines/supercode.bin
+        - engines/Goi5.1.bin
+        - engines/Cerebellum3Merge.bin
       antichess:                # List of book file paths for variant antichess.
         - engines/antibest.bin
       atomic:                   # List of book file paths for variant atomic.
@@ -71,20 +73,20 @@ challenge:                   # Incoming challenges.
   variants:                  # Chess variants to accept (https://lichess.org/variant).
     - standard
 #   - fromPosition
-    - antichess
-    - atomic
-    - chess960
-    - crazyhouse
-    - horde
-    - kingOfTheHill
-    - racingKings
-    - threeCheck
+#   - antichess
+#   - atomic
+#   - chess960
+#   - crazyhouse
+#   - horde
+#   - kingOfTheHill
+#   - racingKings
+#   - threeCheck
   time_controls:             # Time controls to accept.
     - bullet
     - blitz
     - rapid
-#   - classical
-#   - correspondence
+    - classical
+    - correspondence
   modes:                     # Game modes to accept.    
     - casual                 # Unrated games.
     - rated                  # Rated games - must comment if the engine doesn't try to win.
