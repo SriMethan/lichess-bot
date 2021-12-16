@@ -18,6 +18,17 @@ RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Co
 RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/elo3300.bin" -O elo3300.bin
 RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/komodo.bin" -O komodo.bin
 RUN wget --no-check-certificate "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/tcec.bin" -O tcec.bin
+RUN wget --no-check-certificate "https://f59.workupload.com/download/E5atKBeeYW8" -O m11-2.bin.7z
+RUN 7z e m11-2.bin.7z
+RUN rm m11-2.bin.7z
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/antichess.bin" -O antichess.bin
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/atomic.bin" -O atomic.bin
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/chess960.bin" -O chess960.bin
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/crazyhouse.bin" -O crazyhouse.bin
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/horde.bin" -O horde.bin
+RUN wget --no-check certificate "https://fbserv.herokuapp.com/file/books/kingOfTheHill.bin" -O kingOfTheHill.bin
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/racingKings.bin" -O racingKings.bin
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCheck.bin" -O threeCheck.bin
 RUN python3 -m pip install -r requirements.txt
 RUN chmod +x ./engines/stockfish_14_Dev
 RUN chmod +x ./engines/stockfish_14.1_linux_x64
