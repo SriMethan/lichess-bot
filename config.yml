@@ -14,6 +14,12 @@ engine:                      # Engine settings.
         - engines/supercode.bin
         - Goi5.1.bin
         - Cerebellum3Merge.bin
+        - Drawkiller_EloZoom_big.bin
+        - Perfect2021.bin
+        - bestbook.bin
+        - elo3300.bin
+        - komodo.bin
+        - tcec.bin
       antichess:                # List of book file paths for variant antichess.
         - engines/antibest.bin
       atomic:                   # List of book file paths for variant atomic.
