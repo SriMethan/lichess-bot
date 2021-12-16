@@ -14,4 +14,6 @@ Run 7z e Cerebellum3Merge.bin.7z
 RUN rm Cerebellum3Merge.bin.7z
 RUN cd -
 RUN python3 -m pip install -r requirements.txt
+RUN chmod +x ./engines/stockfish_14_Dev
 RUN python3 lichess-bot.py -u
+
