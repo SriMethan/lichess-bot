@@ -3,7 +3,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fsf"   # Binary name of the engine to use.
+  name: "fairy-stockfish"   # Binary name of the engine to use.
   sfname: "stockfish_14_Dev"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true              # Think on opponent's time.
@@ -91,16 +91,16 @@ challenge:                   # Incoming challenges.
   max_base: 315360000        # Maximum amount of base time to accept a challenge. The max is 315360000 (10 years).
   min_base: 0                # Minimum amount of base time to accept a challenge.
   variants:                  # Chess variants to accept (https://lichess.org/variant).
-    - standard
+#   - standard
 #   - fromPosition
-#   - antichess
-#   - atomic
-#   - chess960
-#   - crazyhouse
-#   - horde
-#   - kingOfTheHill
-#   - racingKings
-#   - threeCheck
+    - antichess
+    - atomic
+    - chess960
+    - crazyhouse
+    - horde
+    - kingOfTheHill
+    - racingKings
+    - threeCheck
   time_controls:             # Time controls to accept.
     - bullet
     - blitz
