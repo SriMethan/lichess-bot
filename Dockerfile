@@ -1,7 +1,7 @@
 FROM debian:stable-slim
-MAINTAINER OIVAS7572
-RUN echo OIVAS7572
-CMD echo OIVAS7572
+MAINTAINER RAVIHARAV
+RUN echo RAVIHARAV
+CMD echo RAVIHARAV
 COPY . .
 
 RUN apt-get update && apt-get install -y wget python3 python3-pip p7zip-full
@@ -14,7 +14,7 @@ Run 7z e Cerebellum3Merge.bin.7z
 RUN rm Cerebellum3Merge.bin.7z
 RUN cd ~
 RUN apt install python3-pip
-RUN pip install virtualenv && apt install python3-venv
+RUN pip install virtualenv
 RUN python3 -m venv venv
 RUN virtualenv venv -p python3
 RUN source ./venv/bin/activate
