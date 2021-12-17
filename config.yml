@@ -4,7 +4,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
   name: "fairy-stockfish"   # Binary name of the engine to use.
-  sfname: "stockfish_14_Dev"
+ variantsname: "stockfish_14_Dev"
   protocol: "uci"            # "uci" or "xboard"
   ponder: false              # Think on opponent's time.
   polyglot:
