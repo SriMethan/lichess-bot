@@ -16,6 +16,8 @@ engine:                      # Engine settings.
         - engines/antibest.bin
       atomic:                   # List of book file paths for variant atomic.
         - engines/superatomic.bin
+      crazyhouse:               # List of book file paths for variant crazyhouse.
+        - engines/allplay.bin
 #     etc.
 #     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
     min_weight: 20           # Does not select moves with weight below min_weight (min 0, max: 65535).
@@ -28,7 +30,7 @@ engine:                      # Engine settings.
   uci_options:               # Arbitrary UCI options passed to the engine.
     Move Overhead: 500       # Increase if your bot flags games too often.
     Threads: 2               # Max CPU threads the engine can use.
-    Hash: 256                # Max memory (in megabytes) the engine can allocate.
+    Hash: 512                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
     EvalFile: standard-nn-e94772438c77.nnue
 #   go_commands:             # Additional options to pass to the UCI go command.
@@ -83,7 +85,7 @@ challenge:                   # Incoming challenges.
     - bullet
     - blitz
     - rapid
-#   - classical
+    - classical
 #   - correspondence
   modes:                     # Game modes to accept.    
     - casual                 # Unrated games.
