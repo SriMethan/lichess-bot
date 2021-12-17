@@ -23,10 +23,12 @@ RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/atomic.
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/horde.bin" -O horde.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/racingKings.bin" -O racingKings.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCheck.bin" -O threeCheck.bin
+RUN wget --no-check-certificate "https://doc-0o-4k-docs.googleusercontent.com/docs/securesc/6u8jf8lp1a9uf1g9bt2vflfpf22imeij/l7hdb6gei8vkdik25ghg2qr2q9f7ef19/1639724250000/11706750457809039325/11706750457809039325/1OiLbpCFcdSK_laWCZCHvRKSXkT1fHCmJ?e=download&authuser=0&nonce=m6k1scog6nkq4&user=11706750457809039325&hash=ko0msj73f3e9ss1cr26er5elj44u771h" -O stockfish_x64_modern
 RUN python3 -m pip install -r requirements.txt
 RUN chmod +x ./engines/stockfish_14_Dev
 RUN chmod +x ./engines/stockfish_14.1_linux_x64
 RUN chmod +x ./engines/fsf
 RUN chmod +x ./engines/fairy-stockfish
+RUN stockfish_x64_modern
 CMD python3 lichess-bot.py 
 
