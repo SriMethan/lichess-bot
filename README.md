@@ -35,7 +35,7 @@ Note: You could also `Enable Automatic Deploys` with the `main` branch selected 
 #### How to change nnue
 - you can keep your nnue  [here](/config.yml#L37).
 
-**If you have any quastion please inform me**
+##If you have any quastion please inform me##
   
   [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
   
