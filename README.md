@@ -10,8 +10,8 @@ Engine communication code taken from https://github.com/ShailChoksi/lichess-bot 
 
 - Engine      [Stockfish  (dev)](https://abrok.eu/stockfish/builds/ad357e147a1b8481a04761d726ce1db14115a68f/linux64modern/stockfish_21082721_x64_modern.zip) 
 -  Using standard book [super  book](https://github.com/codingforhelp/Lichess-Bot-Dev/raw/main/engines/supercode.bin)
--  using antichess book [bestanti](https://github.com/codingforhelp/Lichess-Dev-Bot/blob/main/engines/antibest.bin)
--  using atomic book [superaromic](https://github.com/codingforhelp/Lichess-Dev-Bot/blob/main/engines/superatomic.bin)
+-  using antichess book [bestanti](https://github.com/codingforhelp/Lichess-Dev-Bot/raw/main/engines/antibest.bin)
+-  using atomic book [superaromic](https://github.com/codingforhelp/Lichess-Dev-Bot/raw/main/engines/superatomic.bin)
 
 # lichess-bot
 - A bridge between [Lichess API](https://lichess.org/account/oauth/token/create?scopes%5B%5D=bot:play&description=Lichess+Bot+Token) and bots.
@@ -33,13 +33,12 @@ Note: You could also `Enable Automatic Deploys` with the `main` branch selected 
 - you can change (if you need standard but) change this [6th line of config.yml](/config.yml#L6) type on type on `Stockfish_14_Dev` or `stockfish_14.1_linux_x64` after' sure so strongest for standard but not play other variants. again if you need play all variants change this again [6th line of config.yml](/config.yml#L6) type on `fsf` or `fairy-stockfish`  then play all variants 
 
 #### How to change nnue
-- you can keep your nnue  [here](/config.yml#L33).
+- you can keep your nnue  [here](/config.yml#L37).
 
-## If you have any quastion please inform me 
+## If you have any quastion please inform me ##
   
   [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
   
   
-   # ENJOY!!!!!!!!
 
 
