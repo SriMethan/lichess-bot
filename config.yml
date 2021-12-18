@@ -11,15 +11,15 @@ engine:                      # Engine settings.
     enabled: true            # Activate polyglot book.
     book:
       standard:                 # List of book file paths for variant standard.
-        - engines/Cerebellum3Merge.bin
+        - Cerebellum3Merge.bin
       antichess:                # List of book file paths for variant antichess.
         - engines/antibest.bin
       atomic:                   # List of book file paths for variant atomic.
-        - engines/atomic.bin
+        - atomic.bin
       crazyhouse:               # List of book file paths for variant crazyhouse.
         - engines/allplay.bin
       3check:                   # List of book file paths for variant 3check.
-         -engines/threeCheck.bin
+         - threeCheck.bin
       racingkings:              # List of book file paths for variant racingkings
         - racingKings.bin
       horde:                    # List of book file paths for variant horde.
