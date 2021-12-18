@@ -4,14 +4,14 @@ url: "https://lichess.org/"  # Lichess base URL.
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
   name: "fairy-stockfish"   # Binary name of the engine to use.
- variantsname: "stockfish_14_Dev"
+ variantsname: "chess-engine"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
     enabled: true            # Activate polyglot book.
     book:
       standard:                 # List of book file paths for variant standard.
-        - engines/supercode.bin
+        - engines/Cerebellum3Merge.bin
       antichess:                # List of book file paths for variant antichess.
         - engines/antibest.bin
       atomic:                   # List of book file paths for variant atomic.
