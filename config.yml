@@ -35,14 +35,25 @@ engine:                      # Engine settings.
   homemade_options:
 #   Hash: 256  
   uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 200       # Increase if your bot flags games too often.
-    Threads: 256             # Max CPU threads the engine can use.
-    Hash: 512                # Max memory (in megabytes) the engine can allocate.
-    Slow Mover: 10
-    MultiPV: 1
-    Skill Level: 20
-    Use NNUE: true           # allow bot to use neural networks
-    EvalFile: standard-nn-e94772438c77.nnue
+   option name Contempt type spin : 24
+option name Analysis Contempt type combo : Both var Off var White var Black var Both
+option name Threads type spin : 256
+option name Hash type spin : 32768
+option name Ponder type check : false
+option name MultiPV type spin : 1
+option name Skill Level type spin : 20
+option name Move Overhead type spin : 500
+option name nodestime type spin : 0
+option name UCI_Chess960 type check : false
+option name UCI_AnalyseMode type check : false
+option name UCI_LimitStrength type check : false
+option name UCI_Elo type spin : 2850
+option name UCI_ShowWDL type check : false
+option name SyzygyPath type string : <empty>
+option name SyzygyProbeDepth type spin : 100
+option name Syzygy50MoveRule type check : true
+option name SyzygyProbeLimit type spin : 7
+option name Use NNUE type check : true
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
