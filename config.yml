@@ -3,25 +3,25 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project. change dir / to use stockfish multivariant or keep here ./engines to use fsf fairy-stockfish stockfish_14.1_linux_x64 or stockfish_14_Dev
-  name: "stockfish_14_Dev"   # Binary name of the engine to use. if you change dir to / give stockfish_x64_modern to use multivariant engine
+  name: "fairy-stockfish"   # Binary name of the engine to use. if you change dir to / give stockfish_x64_modern to use multivariant engine
   sfname: "stockfish_14_Dev"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true              # Think on opponent's time.
   polyglot:
-    enabled: false            # Activate polyglot book.
+    enabled: true            # Activate polyglot book.
     book:
       standard:                 # List of book file paths for variant standard.
-#        - engines/supercode.bin
-#       - Goi5.1.bin
- #       - Cerebellum3Merge.bin
-#       - Drawkiller_EloZoom_big.bin
-  #      - Perfect2021.bin
-   #     - bestbook.bin
-    #    - elo3300.bin
-     #   - komodo.bin
-      #  - tcec.bin
+        - engines/supercode.bin
+        - Goi5.1.bin
+        - Cerebellum3Merge.bin
+        - Drawkiller_EloZoom_big.bin
+        - Perfect2021.bin
+        - bestbook.bin
+        - elo3300.bin
+        - komodo.bin
+        - tcec.bin
       antichess:                # List of book file paths for variant antichess.
-#       - engines/antibest.bin
+        - engines/antibest.bin
         - antichess.bin
       atomic:                   # List of book file paths for variant atomic.
         - engines/superatomic.bin
@@ -47,6 +47,7 @@ engine:                      # Engine settings.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
     EvalFile: standard-nn-e94772438c77.nnue
+    
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
