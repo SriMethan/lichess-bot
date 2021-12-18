@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM ubuntu:21.10
 MAINTAINER RAVIHARAV
 RUN echo RAVIHARAV
 CMD echo RAVIHARAV
