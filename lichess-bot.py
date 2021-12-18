@@ -426,11 +426,13 @@ def is_game_over(game):
 
 def intro():
     return r"""
-    .   _/|
-    .  // o\
-    .  || ._)  lichess-bot %s
-    .  //__\
-    .  )___(   Play on Lichess with a bot
+********************************************
+*   .   _/|                                *
+*   .  // o\                               *
+*   .  || ._)  lichess-bot %s              *
+*   .  //__\                               *
+*   .  )___(   Play on Lichess with a bot  *
+**********************************************
     """ % __version__
 
 
