@@ -8,20 +8,20 @@ engine:                      # Engine settings.
   protocol: "uci"            # "uci" or "xboard"
   ponder: true              # Think on opponent's time.
   polyglot:
-    enabled: true            # Activate polyglot book.
+    enabled: false            # Activate polyglot book.
     book:
       standard:                 # List of book file paths for variant standard.
 #        - engines/supercode.bin
-        - Goi5.1.bin
+#       - Goi5.1.bin
  #       - Cerebellum3Merge.bin
-        - Drawkiller_EloZoom_big.bin
+#       - Drawkiller_EloZoom_big.bin
   #      - Perfect2021.bin
    #     - bestbook.bin
     #    - elo3300.bin
      #   - komodo.bin
       #  - tcec.bin
       antichess:                # List of book file paths for variant antichess.
-        - engines/antibest.bin
+#       - engines/antibest.bin
         - antichess.bin
       atomic:                   # List of book file paths for variant atomic.
         - engines/superatomic.bin
