@@ -1,6 +1,7 @@
+![GitHub Repo stars](https://img.shields.io/github/stars/codingforhelp/Lichess-Dev-Bot?style=flat-square)
+
 # MAINTAINERS 
 - [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
-- [Github stars](https://img.shields.io/github/stars/codingforhelp/Lichess-Dev-Bot?style=flat-square)
 
 
 # lichess-bot
