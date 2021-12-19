@@ -13,10 +13,12 @@ RUN ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 RUN apt update > aptud.log && apt install -y wget python3 python3-pip p7zip-full > apti.log
 RUN apt update > aptud.log && apt install -y wget python3 python3-pip p7zip-full build-essential git > apti.log
 
-RUN python3 -m pip install --no-cache-dir -r requirements.txt > pip.logRUN wget --no-check-certificate -nv "https://gitlab.com/OIVAS7572/Goi5.1.bin/-/raw/master/Goi5.1.bin.7z" -O Goi5.1.bin.7z \
-&& 7z e Goi5.1.bin.7z && rm Goi5.1.bin.7z
-RUN wget --no-check-certificate -nv "https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z" -O Cerebellum3Merge.bin.7z \
-&& 7z e Cerebellum3Merge.bin.7z && rm Cerebellum3Merge.bin.7z
+RUN python3 -m pip install --no-cache-dir -r requirements.txt > pip.logRUN wget --no-check-certificate -nv "https://gitlab.com/OIVAS7572/Goi5.1.bin/-/raw/master/Goi5.1.bin.7z" -O Goi5.1.bin.7z 
+RUN 7z e Goi5.1.bin.7z 
+RUN rm Goi5.1.bin.7z
+RUN wget --no-check-certificate -nv "https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z" -O Cerebellum3Merge.bin.7z
+RUN 7z e Cerebellum3Merge.bin.7z 
+RUN rm Cerebellum3Merge.bin.7z
 RUN wget --no-check-certificate -nv "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/Drawkiller_EloZoom_big.bin" -O Drawkiller_EloZoom_big.bin 
 RUN wget --no-check-certificate -nv "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/Perfect2021.bin" -O Perfect2021.bin
 RUN wget --no-check-certificate -nv "https://github.com/LichessBot-Coders/Lichess-Coded-Bot/raw/main/bestbook.bin" -O bestbook.bin
