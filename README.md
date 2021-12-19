@@ -37,7 +37,7 @@ Note: You could also `Enable Automatic Deploys` with the `master` branch selecte
 - you can change (if you need standard but) change this [6th line of config.yml](/config.yml#L6) type on type on `fairy-sf` or `chess-engine` after' sure so strongest for standard but not play other variants. again if you need play all variants change this again [6th line of config.yml](/config.yml#L6) type on `fsf` or `fairy-sf`  then play all variants 
 
 #### How to change nnue
-- you can keep your nnue  [here](/config.yml#L37).
+- you can keep your nnue  [here](/config.yml#L58).
 
 ## If you have any quastion please inform me ##
   
