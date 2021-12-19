@@ -233,8 +233,8 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
         def __init__(self, room):
             self.room = room
     opponent = game.black.name if game.white.name == user_profile["username"] else game.white.name
-    conversation.send_reply(SendLine('player'), f'All The Best  {opponent} !')
-    conversation.send_reply(SendLine('spectator'), f'Watch my game its be nice')
+    conversation.send_reply(SendLine('player'), f'Good Luck @{opponent}')
+    conversation.send_reply(SendLine('spectator'), f'Good Luck @{opponent}')
     
     logger.info("+++ {}".format(game))
 
@@ -307,8 +307,8 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
         except StopIteration:
             break
     
-    conversation.send_reply(SendLine('player'), f'Thank you !')
-    conversation.send_reply(SendLine('spectator'), f'Thanks for watching')
+    conversation.send_reply(SendLine('player'), f'Good Game')
+    conversation.send_reply(SendLine('spectator'), f'Good Game')
 
     engine.stop()
     engine.quit()
@@ -426,16 +426,11 @@ def is_game_over(game):
 
 def intro():
     return r"""
-###############################################################################
-#      **           Welcome to the All variants bot        **                #
-###############################################################################
-********************************************
-*   .   _/|                                *
-*   .  // o\                               *
-*   .  || ._)  lichess-bot %s              *
-*   .  //__\                               *
-*   .  )___(   Play on Lichess with a bot  *
-**********************************************
+    .   _/|
+    .  // o\
+    .  || ._)  lichess-bot %s
+    .  //__\
+    .  )___(   Play on Lichess with a bot
     """ % __version__
 
 
