@@ -12,7 +12,7 @@ RUN python3 -m pip install --no-cache-dir -r requirements.txt > pip.log
 RUN wget --no-check-certificate -nv "https://gitlab.com/OIVAS7572/Goi5.1.bin/-/raw/MEGA/Goi5.1.bin.7z" -O Goi5.1.bin.7z \
 && 7z e Goi5.1.bin.7z && rm Goi5.1.bin.7z
 
-RUN wget --no-check-certificate -nv "https://github.com/RaviharaV-bot/sfbot/raw/main/stockfish_x64_modern" -O chess-engine \ 
+RUN wget --no-check-certificate -nv "https://github.com/RaviharaV-bot/sfbot/raw/main/stockfish_x64_modern" -O chess-engine
 #&& wget --no-check-certificate -nv "https://tests.stockfishchess.org/api/nn/nn-3475407dc199.nnue" -O nn-3475407dc199.nnue \
 
 
