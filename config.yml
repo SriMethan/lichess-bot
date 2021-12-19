@@ -2,8 +2,8 @@ token: "lip_ctQxVwmBRw1yhxiCvjL2"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
-  dir: "./engines/"          # Directory containing engines, relative to this project. change dir / to use stockfish multivariant or keep here ./engines to use fsf fairy-stockfish stockfish_14.1_linux_x64 or stockfish_14_Dev
-  name: "fairy-stockfish"   # Binary name of the engine to use. if you change dir to / give stockfish_x64_modern to use multivariant engine
+  dir: "/"          # Directory containing engines, relative to this project. change dir / to use stockfish multivariant or keep here ./engines to use fsf fairy-stockfish stockfish_14.1_linux_x64 or stockfish_14_Dev
+  name: "fairy-sf"   # Binary name of the engine to use. if you change dir to / give stockfish_x64_modern to use multivariant engine
   sfname: "stockfish_14_Dev"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true              # Think on opponent's time.
