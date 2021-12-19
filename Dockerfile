@@ -37,6 +37,7 @@ RUN python3 -m pip install -r requirements.txt
 RUN chmod +x ./engines/stockfish_14_Dev
 RUN chmod +x ./engines/stockfish_14.1_linux_x64
 RUN chmod +x ./engines/fsf
+RUN chmod +x /fairy-sf
 RUN chmod +x ./engines/fairy-stockfish
 #RUN chmod +x ./stockfish_x64_modern
 CMD python3 lichess-bot.py 
