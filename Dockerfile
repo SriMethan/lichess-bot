@@ -29,7 +29,9 @@ RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/atomic.
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/horde.bin" -O horde.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/racingKings.bin" -O racingKings.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCheck.bin" -O threeCheck.bin
-RUN wget --no-check-certificate "https://github.com/RaviharaV-bot/sfbot/raw/main/stockfish_x64_modern" -O stockfish_x64_modern
+#RUN wget --no-check-certificate "https://github.com/RaviharaV-bot/sfbot/raw/main/stockfish_x64_modern" -O stockfish_x64_modern
+RUN wget --no-check-certificate "https://github.com/codingforhelp/Lichess-Dev-Bot/raw/main/engines/allplay.bin" -O allplay.bin
+RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/kingOfTheHill.bin" -O kingofthehill.bin
 RUN python3 -m pip install -r requirements.txt
 RUN chmod +x ./engines/stockfish_14_Dev
 RUN chmod +x ./engines/stockfish_14.1_linux_x64
