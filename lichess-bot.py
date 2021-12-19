@@ -425,15 +425,12 @@ def is_game_over(game):
 
 
 def intro():
- ###############################################################################
-#                           This Bot Play all variants                          #
-###############################################################################
     return r"""
     .   _/|
     .  // o\
     .  || ._)  lichess-bot %s
     .  //__\
-    .  )___(   Play on Lichess with a bot
+    .  )___(   Play on Lichess with a bot (all variants)
     """ % __version__
 
 
