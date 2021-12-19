@@ -1,0 +1,9 @@
+#!/bin/bash
+build:
+  docker:
+    worker: Dockerfile
+run:
+  worker:
+    command:
+      - python3 run.py
+    image: worker

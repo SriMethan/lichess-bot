@@ -3,7 +3,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fairy-stockfish"   # Binary name of the engine to use.
+  name: "fairy-sf"   # Binary name of the engine to use.
   sfname: "chess-engine"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
@@ -55,7 +55,7 @@ option name SyzygyProbeDepth type spin : 100
 option name Syzygy50MoveRule type check : true
 option name SyzygyProbeLimit type spin : 7
 option name Use NNUE type check : true
-EvalFile: 3check-3ed5960cfcf3.nnue:938525872610.nnue
+EvalFile: 3check-3ed5960cfcf3.nnue
 #    go_commands:             # additional options to pass to the UCI go command
 #      nodes: 5000               # Search so many nodes only.
 #      depth: 20               # Search depth ply only.
