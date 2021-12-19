@@ -1,15 +1,16 @@
-FROM debian:stable-slim
+FROM ubuntu:21.10
 MAINTAINER Codingforhelp
 RUN echo Codingforhelp
 CMD echo Codingforhelp
 COPY . .
 
-#ADD /engine/ .
-#RUN rm -r engine
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y tzdata
 
-# If you want to run any other commands use "RUN" before.
+RUN unlink /etc/localtime
+RUN ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 
-RUN apt-get update && apt-get install -y wget python3 python3-pip p7zip-full
+RUN apt-get install -y wget python3 python3-pip p7zip-full
 
 RUN wget --no-check-certificate "https://gitlab.com/OIVAS7572/Goi5.1.bin/-/raw/master/Goi5.1.bin.7z" -O Goi5.1.bin.7z
 RUN 7z e Goi5.1.bin.7z
