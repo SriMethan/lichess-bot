@@ -7,7 +7,7 @@ COPY . .
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y tzdata
 RUN npm ci
-RUN npm run build --pro
+RUN npm run build --prod
 
 RUN unlink /etc/localtime
 RUN ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
