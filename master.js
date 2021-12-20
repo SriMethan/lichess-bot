@@ -90,3 +90,4 @@ function checkMoves() {
 init();
 $("div.moves").bind("DOMSubtreeModified", checkMoves);
 checkMoves();
+
