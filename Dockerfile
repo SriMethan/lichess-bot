@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM node:12.16.2
 MAINTAINER Codingforhelp
 RUN echo Codingforhelp
 CMD echo Codingforhelp
