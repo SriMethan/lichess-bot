@@ -1,8 +1,12 @@
-FROM node:12.16.2
-MAINTAINER Codingforhelp
-RUN echo Codingforhelp
-CMD echo Codingforhelp
+FROM node:12.16.2-alpine3.11
+RUN apk --no-cache --update --virtual build-dependencies add
+python
+make
+g++
+WORKDIR /app
 COPY . .
+RUN npm ci
+RUN npm run build --prod
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y tzdata
