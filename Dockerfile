@@ -1,4 +1,4 @@
-FROM  ubuntu:22.04
+FROM  debian:stable-slim
 MAINTAINER drrespectable
 RUN echo drrespectable
 CMD echo drrespectable
