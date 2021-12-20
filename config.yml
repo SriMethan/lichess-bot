@@ -26,8 +26,8 @@ engine:                      # Engine settings.
         - horde.bin
       kingofthehill:            # List of book file paths for variant kingofthehill
         - KingOfTheHill.bin
-      Chess960:                 # List of book file paths for variant chess960
-        - Goi5.1.bin
+      chess960:                 # List of book file paths for variant chess960
+        - Cerebellum3Merge.bin
 #      etc.
 #      use the same pattern for giveaway, crazyhouse, horde, kingofthehill, racingkings, 3check as well
       min_weight: 100          # selects move with highest weight but not below this value
@@ -46,7 +46,7 @@ option name MultiPV type spin : 1
 option name Skill Level type spin : 20
 option name Move Overhead type spin : 1000
 option name nodestime type spin : 0
-option name UCI_Chess960 type check : false
+option name UCI_Chess960 type check : true
 option name UCI_AnalyseMode type check : false
 option name UCI_LimitStrength type check : false
 option name UCI_Elo type spin : 2850
@@ -54,7 +54,7 @@ option name UCI_ShowWDL type check : false
 option name SyzygyPath type string : syzygy-MEGA
 option name SyzygyProbeDepth type spin : 100
 option name Syzygy50MoveRule type check : true
-option name SyzygyProbeLimit type spin : 7
+option name SyzygyProbeLimit type spin : 50
 option name Use NNUE type check : true
 EvalFile: 3check-3ed5960cfcf3.nnue:atomic-36ea696742e1.nnue:racingkings-67476a9e2e20.nnue:kingofthehill-86a538a53974.nnue
 #    go_commands:             # additional options to pass to the UCI go command
@@ -71,7 +71,7 @@ EvalFile: 3check-3ed5960cfcf3.nnue:atomic-36ea696742e1.nnue:racingkings-67476a9e
 #     syzygy: "Syzygy Path"
 #  silence_stderr: false      # some engines (yes you, leela) are very noisy
 
-abort_time: 60               # time to abort a game in seconds when there is no activity
+abort_time: 120              # time to abort a game in seconds when there is no activity
 fake_think_time: false       # artificially slow down the bot to pretend like it's thinking
 
 challenge:                   # incoming challenges
