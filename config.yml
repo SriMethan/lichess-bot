@@ -62,12 +62,14 @@ EvalFile: 3check-3ed5960cfcf3.nnue
 #  xboard_options:            # arbitrary xboard options passed to the engine
 #    cores: "4"
 #    memory: "4096"
-#    egtpath:                 # dir containing egtb, relative to this project
+#   egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
 #     scorpio: "Scorpio Path"
-      syzygy: "piecesSyzygy.7z"
-#  silence_stderr: false      # some engines (yes you, leela) are very noisy
+#     syzygy: "Syzygy Path"
+#   go_commands:             # Additional options to pass to the XBoard go command.
+#     depth: 5               # Search depth ply only.
+#     Do note that the go commands 'movetime' and 'nodes' are invalid and may cause bad time management for XBoard engines.
 
 abort_time: 60               # time to abort a game in seconds when there is no activity
 fake_think_time: false       # artificially slow down the bot to pretend like it's thinking
