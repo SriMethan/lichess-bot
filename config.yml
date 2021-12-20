@@ -51,7 +51,7 @@ option name UCI_AnalyseMode type check : false
 option name UCI_LimitStrength type check : false
 option name UCI_Elo type spin : 2850
 option name UCI_ShowWDL type check : false
-option name SyzygyPath type string : 3-4-5piecesSyzygy.7z
+option name SyzygyPath type string : syzygy-MEGA
 option name SyzygyProbeDepth type spin : 100
 option name Syzygy50MoveRule type check : true
 option name SyzygyProbeLimit type spin : 7
@@ -64,7 +64,7 @@ EvalFile: 3check-3ed5960cfcf3.nnue:atomic-36ea696742e1.nnue:racingkings-67476a9e
 #  xboard_options:            # arbitrary xboard options passed to the engine
 #    cores: "4"
 #    memory: "4096"
-     egtpath:                 # dir containing egtb, relative to this project
+#    egtpath:                 # dir containing egtb, relative to this project
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
 #     scorpio: "Scorpio Path"
