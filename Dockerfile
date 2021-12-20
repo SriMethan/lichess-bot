@@ -1,4 +1,4 @@
-FROM  alpine:latest
+FROM  Ubuntu:18.04
 MAINTAINER drrespectable
 RUN echo drrespectable
 CMD echo drrespectable
