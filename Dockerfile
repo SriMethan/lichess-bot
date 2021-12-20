@@ -1,4 +1,4 @@
-FROM  Ubuntu:18.04
+FROM  ubuntu:18.04
 MAINTAINER drrespectable
 RUN echo drrespectable
 CMD echo drrespectable
