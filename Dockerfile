@@ -1,4 +1,4 @@
-FROM ubuntu:21.10
+FROM openjdk:8-jdk-alpine
 MAINTAINER Codingforhelp
 RUN echo Codingforhelp
 CMD echo Codingforhelp
