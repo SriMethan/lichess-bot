@@ -41,6 +41,9 @@ Note: You could also `Enable Automatic Deploys` with the `master` branch selecte
 #### How to change nnue
 - you can keep your nnue  [here](/config.yml#L58).
 
+### If you need accept bots 
+- you can change [78th line of config.yml](/config.yml#L78) then wait 2 mins out of playing, after  your bot will accept 
+
 ## If you have any quastion please inform me ##
   
   [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
