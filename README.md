@@ -42,7 +42,7 @@ Note: You could also `Enable Automatic Deploys` with the `master` branch selecte
 - you can keep your nnue  [here](/config.yml#L58).
 
 ### If you need accept bots 
-- you can change [78th line of config.yml](/config.yml#L78) type on `true` , then wait 2 mins during auto deploy (without playing) , after  your bot will accept 
+- you can change [80th line of config.yml](/config.yml#L80) type on `true` , then wait 2 mins during auto deploy (without playing) , after  your bot will accept 
 
 ## If you have any quastion please inform me ##
   
