@@ -3,8 +3,8 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fairy-sf"   # Binary name of the engine to use.
-  sfname: "chess-engine"
+  name: "chess-engine"   # Binary name of the engine to use.
+  variantname: "vsf"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
@@ -39,7 +39,7 @@ engine:                      # Engine settings.
  
 option name Contempt type spin : 24
 option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 48
+option name Threads type spin : 100
 option name Hash type spin : 27968
 option name Ponder type check : false
 option name MultiPV type spin : 1
