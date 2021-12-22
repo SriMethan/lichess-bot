@@ -29,11 +29,11 @@ class Conversation:
             self.send_reply(line, "{} running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
         elif cmd == "howto":
             self.send_reply(line, "How to run your own bot: Check out 'Lichess Bot API'")
-        elif cmd == "eval" and line.room == "spectator":
+        elif cmd == "eval":
             stats = self.engine.get_stats()
             self.send_reply(line, ", ".join(stats))
         elif cmd == "eval":
-            self.send_reply(line, "I don't tell that to my opponent, sorry.")
+            self.send_reply(line, "That's the evaluation of the position according to my engine! ")
         elif cmd == "queue":
             if self.challengers:
                 challengers = ", ".join(["@" + challenger.challenger_name for challenger in reversed(self.challengers)])
