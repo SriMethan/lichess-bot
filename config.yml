@@ -39,7 +39,7 @@ engine:                      # Engine settings.
  
 option name Contempt type spin : 24
 option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 30
+option name Threads type spin : 25
 option name Hash type spin : 1040
 option name Ponder type check : false
 option name MultiPV type spin : 1
