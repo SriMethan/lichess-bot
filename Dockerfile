@@ -10,8 +10,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends python build-es
 RUN useradd --create-home --user-group builder
 WORKDIR /home/builder
 
-ADD https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz /home/builder/
-RUN chown builder:builder /home/builder/emsdk-portable.tar.gz
 USER builder:builder
 RUN tar -xzf emsdk-portable.tar.gz && rm emsdk-portable.tar.gz
 
