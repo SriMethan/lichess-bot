@@ -1,4 +1,4 @@
-FROM   debian:stable-slim
+FROM alpine:latest
 MAINTAINER drrespectable
 RUN echo drrespectable
 CMD echo drrespectable
