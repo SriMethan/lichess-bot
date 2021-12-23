@@ -1,4 +1,15 @@
+##using languages
 
+![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=ffffff)
+![C++](https://img.shields.io/badge/-C++-00599C?logo=c%2b%2b&logoColor=ffffff)
+![Java](https://img.shields.io/badge/-Java-007396?logo=Java&logoColor=000000)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?&logo=javascript&logoColor=000000)
+
+##using apps
+
+![VS Code](https://img.shields.io/badge/VSCode-%23007ACC?logo=Visual-studio-code)
+![Pycharm](https://img.shields.io/badge/PyCharm-green?logo=PyCharm)
+![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=000000)
 
 # MAINTAINERS 
 - [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
