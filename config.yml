@@ -15,7 +15,7 @@ engine:                      # Engine settings.
       antichess:                # List of book file paths for variant antichess.
         - engines/antibest.bin
       atomic:                   # List of book file paths for variant atomic.
-        -  Goi5.1.bin
+        -  atomic.bin
       crazyhouse:               # List of book file paths for variant crazyhouse.
         - engines/allplay.bin
       3check:                   # List of book file paths for variant 3check.
