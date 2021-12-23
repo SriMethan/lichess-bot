@@ -8,12 +8,7 @@ COPY . .
 RUN apt-get update && apt-get install -y --no-install-recommends python build-essential cmake nodejs git-core uglifyjs ca-certificates default-jre-headless
 
 RUN useradd --create-home --user-group builder
-WORKDIR /home/builder
-
-USER builder:builder
-RUN tar -xzf emsdk-portable.tar.gz && rm emsdk-portable.tar.gz
-
-
+WORKDIR /home/builder 
 
 
 VOLUME /home/builder/stockfish.js
