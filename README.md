@@ -14,7 +14,7 @@ Engine communication code taken from https://github.com/ShailChoksi/lichess-bot 
 -  Using standard book [Cerebellum3Merge.bin](https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z)
 -  using antichess book [bestanti](https://github.com/codingforhelp/Lichess-Dev-Bot/raw/main/engines/antibest.bin)
 -  using books other all variants too!
--  Use nnue [3check](https://github.com/stockfihnim/Variants-Bot/raw/main/engines/3check-3ed5960cfcf3.nnue)
+-  Use nnue for all variants 
 
 # lichess-bot
 - A bridge between [Lichess API](https://lichess.org/account/oauth/token/create?scopes%5B%5D=bot:play&description=Lichess+Bot+Token) and bots.
