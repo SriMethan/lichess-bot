@@ -1,4 +1,4 @@
-FROM ubuntu:22:04
+From ubuntu:22.04 LTS
 MAINTAINER drrespectable
 RUN echo drrespectable
 CMD echo drrespectable
