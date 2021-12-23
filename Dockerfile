@@ -14,13 +14,11 @@ USER builder:builder
 RUN tar -xzf emsdk-portable.tar.gz && rm emsdk-portable.tar.gz
 
 
-WORKDIR /tmp
-RUN echo "int main() { return 0; }" > t.cpp && em++ -fno-exceptions -fno-rtti -std=c++11 t.cpp && em++ -fno-exceptions -fno-rtti -std=c++11 -s WASM=1 t.cpp
+
 
 VOLUME /home/builder/stockfish.js
 WORKDIR /home/builder/stockfish.js
 
-CMD ./build.sh
 
 
 RUN apt-get update && apt-get install -y wget python3 python3-pip p7zip-full
