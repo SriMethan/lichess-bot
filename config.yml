@@ -43,6 +43,7 @@ option name Ponder type check : false
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
 option name Slow Mover typer spin : 100
+option name Minimum Thinking Time : 5
 option name Move Overhead type spin : 1000
 option name nodestime type spin : 0
 option name UCI_Chess960 type check : true
