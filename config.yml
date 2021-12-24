@@ -37,9 +37,8 @@ engine:                      # Engine settings.
  
 option name Contempt type spin : 24
 option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 512
-option name Hash type spin : 131072
-𝐒𝐲𝐳𝐲𝐠𝐲𝐏𝐚𝐭𝐡: <Syzygy_tablebase(𝐬)>
+option name Threads type spin : 3000
+option name Hash type spin : 4048
 option name Ponder type check : false
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
