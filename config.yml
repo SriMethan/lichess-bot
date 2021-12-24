@@ -50,10 +50,10 @@ option name UCI_AnalyseMode type check : false
 option name UCI_LimitStrength type check : false
 option name UCI_Elo type spin : 2850
 option name UCI_ShowWDL type check : false
-option name SyzygyPath type string : syzygy-MEGA
-option name SyzygyProbeDepth type spin : 100
+option name SyzygyPath type string : <./engines/Syzygy_tablebase>
+option name SyzygyProbeDepth type spin : 1000
 option name Syzygy50MoveRule type check : true
-option name SyzygyProbeLimit type spin : 50
+option name SyzygyProbeLimit type spin : 100
 option name Use NNUE type check : true
 EvalFile: 3check-3ed5960cfcf3.nnue:atomic-36ea696742e1.nnue:racingkings-67476a9e2e20.nnue:kingofthehill-86a538a53974.nnue
 #    go_commands:             # additional options to pass to the UCI go command
