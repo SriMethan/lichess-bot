@@ -3,7 +3,6 @@ import chess
 from chess.variant import find_variant
 import chess.polyglot
 import engine_wrapper
-import endgame.cpp
 import model
 import json
 import lichess
