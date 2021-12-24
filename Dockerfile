@@ -30,6 +30,7 @@ RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw
 RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw/main/engines/racingkings-67476a9e2e20.nnue" -O nn-racingkings-67476a9e2e20.nnue
 RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw/main/engines/kingofthehill-86a538a53974.nnue" -O nn-kingofthehill-86a538a53974.nnue
 RUN 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
+RUN 7z e syzygy-MEGA.zip && rm syzygy-MEGA.zip  && mv syzygy* syzygy-MEGA
 
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
