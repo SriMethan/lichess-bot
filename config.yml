@@ -63,11 +63,11 @@ EvalFile: 3check-3ed5960cfcf3.nnue:atomic-36ea696742e1.nnue:racingkings-67476a9e
 #  xboard_options:            # arbitrary xboard options passed to the engine
 #    cores: "4"
 #    memory: "4096"
-#    egtpath:                 # dir containing egtb, relative to this project
+     egtpath:                 # dir containing egtb, relative to this project
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
 #     scorpio: "Scorpio Path"
-#     syzygy: "Syzygy Path"
+      syzygy: "./engines/Syzygy_tablebase"
 #  silence_stderr: false      # some engines (yes you, leela) are very noisy
 
 abort_time: 120              # time to abort a game in seconds when there is no activity
