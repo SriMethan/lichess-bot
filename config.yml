@@ -39,19 +39,19 @@ option name Contempt type spin : 24
 option name Analysis Contempt type combo : Both var Off var White var Black var Both
 option name Threads type spin : 10
 option name Hash type spin : 1000
-option name Clear Hash : 9
+option name nodestime type spin: 10000
 option name Ponder type check : false
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
 option name Slow Mover typer spin : 200
-option name Move Overhead type spin : 1000
+option name Move Overhead type spin : 5000
 option name nodestime type spin : 0
 option name UCI_Chess960 type check : true
 option name UCI_AnalyseMode type check : false
 option name UCI_LimitStrength type check : false
 option name UCI_Elo type spin : 2850
 option name UCI_ShowWDL type check : false
-option name SyzygyPath type string : Syzygy_tablebase
+option name SyzygyPath type string : <empty>
 option name SyzygyProbeDepth type spin : 1000
 option name Syzygy50MoveRule type check : true
 option name SyzygyProbeLimit type spin : 100
