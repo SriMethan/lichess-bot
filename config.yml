@@ -3,7 +3,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fairy-sf"    # Binary name of the engine to use.
+  name: "fairy-sf"         # Binary name of the engine to use.
   sfname: "chess-engine"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
@@ -37,12 +37,12 @@ engine:                      # Engine settings.
  
 option name Contempt type spin : 24
 option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 25
+option name Threads type spin : 20
 option name Hash type spin : 1040
 option name Ponder type check : false
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
-option name Slow Mover typer spin : 200
+option name Slow Mover typer spin : 100
 option name Move Overhead type spin : 1000
 option name nodestime type spin : 0
 option name UCI_Chess960 type check : true
@@ -53,7 +53,7 @@ option name UCI_ShowWDL type check : false
 option name SyzygyPath type string : <empty>
 option name SyzygyProbeDepth type spin : 1000
 option name Syzygy50MoveRule type check : true
-option name SyzygyProbeLimit type spin :506
+option name SyzygyProbeLimit type spin : 7
 option name Use NNUE type check : true
 EvalFile: 3check-3ed5960cfcf3.nnue:atomic-36ea696742e1.nnue:racingkings-67476a9e2e20.nnue:kingofthehill-86a538a53974.nnue
 #    go_commands:             # additional options to pass to the UCI go command
