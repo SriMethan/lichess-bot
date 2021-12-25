@@ -29,8 +29,6 @@ RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw
 RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw/main/engines/atomic-36ea696742e1.nnue" -O nn-atomic-36ea696742e1.nnue
 RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw/main/engines/racingkings-67476a9e2e20.nnue" -O nn-racingkings-67476a9e2e20.nnue
 RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw/main/engines/kingofthehill-86a538a53974.nnue" -O nn-kingofthehill-86a538a53974.nnue
-RUN wget --no-check-certificate "https://github.com/codingforhelp/Lichess-Bot-Dev/raw/main/engines/horde.nnue" -O nn-horde.nnue
-RUN wget --no -check-certificate "https://github.com/codingforhelp/Lichess-Bot-Dev/raw/main/engines/crazyhouse.nnue" -O nn-crazyhouse.nnue
 RUN 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
 
 COPY requirements.txt .
