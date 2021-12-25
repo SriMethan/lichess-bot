@@ -23,7 +23,7 @@ RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCh
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/kingOfTheHill.bin" -O KingOfTheHill.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/atomic.bin" -O atomic.bin
 RUN wget --no-check-certificate "https://gitlab.com/OIVAS7572/Syzygy/-/archive/MEGA/Syzygy-MEGA.zip" -O syzygy-MEGA.zip
-RUN wget --no-check-certificate "https://abrok.eu/stockfish/builds/7d82f0d1f4e25892e1901d25cf5cf6f6a2606c2a/linux64ssse/stockfish_21122211_x64_ssse.zip" -O chess-engine.zip
+RUN wget --no-check-certificate "https://abrok.eu/stockfish/builds/7d82f0d1f4e25892e1901d25cf5cf6f6a2606c2a/linux64bmi2/stockfish_21122211_x64_bmi2.zip" -O chess-engine.zip
 RUN wget --no-check-certificate "https://data.stockfishchess.org/nn/nn-938525872610.nnue" -O nn-938525872610.nnue
 RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw/main/engines/3check-3ed5960cfcf3.nnue" -O nn-3check-3ed5960cfcf3.nnue
 RUN wget --no-check-certificate "https://github.com/stockfihnim/Variants-Bot/raw/main/engines/atomic-36ea696742e1.nnue" -O nn-atomic-36ea696742e1.nnue
@@ -35,6 +35,5 @@ COPY requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 RUN chmod +x chess-engine
-RUN chmod +x ./engines/fairy-sf
 
 CMD python3 run.py
