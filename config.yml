@@ -2,13 +2,13 @@ token: "lip_97hb1STxAjnmMU8A2lZz"   # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
-  dir: "./"                  # Directory containing engines, relative to this project.
-  name: "fairy-sf"      # Binary name of the engine to use.
+  dir: "./engines/"          # Directory containing engines, relative to this project.
+  name: "fairy-sf"    # Binary name of the engine to use.
   sfname: "chess-engine"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
-    enabled: true           # Activate polyglot book.
+    enabled: true            # Activate polyglot book.
     book:
       standard:                 # List of book file paths for variant standard.
         - Cerebellum3Merge.bin
