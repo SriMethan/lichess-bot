@@ -1,3 +1,5 @@
+[![Python Build](https://github.com/codingforhelp/Lichess-Bot-stronge/actions/workflows/python-build.yml/badge.svg)](https://github.com/codingforhelp/Lichess-Bot-stronge/actions/workflows/python-build.yml)
+
 ## using languages
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=ffffff)
