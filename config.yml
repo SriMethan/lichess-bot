@@ -32,7 +32,7 @@ engine:                      # Engine settings.
 #     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
     min_weight: 100            # Does not select moves with weight below min_weight (min 0, max: 65535).
     selection: "best_move" # Move selection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in the 2nd and 3rd case).
-    max_depth: 100             # Half move max depth.
+    max_depth: 245             # Half move max depth.
   online_moves:
     chessdb_book:
       enabled: true
