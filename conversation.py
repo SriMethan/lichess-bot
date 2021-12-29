@@ -26,23 +26,27 @@ class Conversation:
             self.send_reply(line, "Waiting 60 seconds...")
         elif cmd == "name":
             name = game.me.name
-            self.send_reply(line, "{}  running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
+            self.send_reply(line, "{} running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
         elif cmd == "howto":
-            self.send_reply(line, "How to run your own bot: Check out 'Lichess Bot API' and you can too get bot by in this repo https://github.com/codingforhelp/Lichess-Dev-Bot ")
-        elif cmd == "eval":
+            self.send_reply(line, "How to run: Check out 'Lichess Bot API'")
+        elif cmd == "eval" and line.room == "spectator":
             stats = self.engine.get_stats()
             self.send_reply(line, ", ".join(stats))
         elif cmd == "eval":
-            self.send_reply(line, "That's the evaluation of the position according to my engine! ")
+            self.send_reply(line, "I don't tell that to my opponent, sorry.")
         elif cmd == "queue":
             if self.challengers:
                 challengers = ", ".join(["@" + challenger.challenger_name for challenger in reversed(self.challengers)])
                 self.send_reply(line, "Challenge queue: {}".format(challengers))
             else:
-                self.send_reply(line, "No challenges queued. Wait for my current game to finish then kindly challenge.")
+                self.send_reply(line, "No challenges queued.")
 
     def send_reply(self, line, reply):
         self.xhr.chat(self.game.id, line.room, reply)
+
+    def send_message(self, room, message):
+        if message:
+            self.send_reply(ChatLine({"room": room}), message)
 
 
 class ChatLine:
