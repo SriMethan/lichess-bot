@@ -319,7 +319,7 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     else:
         logger.info("--- {} Game over".format(game.url()))
 
-   control_queue.put_nowait({"type": "local_game_done"})
+  control_queue.put_nowait({"type": "local_game_done"})
 
 
 def choose_move_time(engine, board, search_time, ponder, draw_offered):
