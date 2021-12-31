@@ -20,7 +20,7 @@ engine:                      # Engine settings.
         - engines/allplay.bin
       3check:                   # List of book file paths for variant 3check.
          - threeCheck.bin
-      racingkings:              # List of book file paths for variant racingkings
+#     racingkings:              # List of book file paths for variant racingkings
         - racingKings.bin
       horde:                    # List of book file paths for variant horde.
         - horde.bin
@@ -58,7 +58,7 @@ engine:                      # Engine settings.
   homemade_options:
 #   Hash: 256  
   uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 100       # Increase if your bot flags games too often.
+    Move Overhead: 50        # Increase if your bot flags games too often.
     Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
