@@ -106,7 +106,7 @@ challenge:                   # Incoming challenges.
     - crazyhouse
     - horde
     - kingOfTheHill
-    - racingKings
+#   - racingKings
     - threeCheck
   time_controls:             # Time controls to accept.
     - bullet
