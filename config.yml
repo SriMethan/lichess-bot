@@ -24,6 +24,8 @@ engine:                      # Engine settings.
         - horde.bin
       kingofthehill:            # List of book file paths for variant kingofthehill
         - KingOfTheHill.bin
+      racingking:               # List of book file paths for variant racingking
+        - racingKings.bin
       chess960:                 # List of book file paths for variant chess960
         - Cerebellum3Merge.bin
 #     etc.
@@ -56,7 +58,7 @@ engine:                      # Engine settings.
   homemade_options:
 #   Hash: 256  
   uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 500       # Increase if your bot flags games too often.
+    Move Overhead: 100       # Increase if your bot flags games too often.
     Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
