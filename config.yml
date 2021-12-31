@@ -20,8 +20,6 @@ engine:                      # Engine settings.
         - engines/allplay.bin
       3check:                   # List of book file paths for variant 3check.
          - threeCheck.bin
-#     racingkings:              # List of book file paths for variant racingkings
-        - racingKings.bin
       horde:                    # List of book file paths for variant horde.
         - horde.bin
       kingofthehill:            # List of book file paths for variant kingofthehill
