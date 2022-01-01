@@ -57,26 +57,19 @@ engine:                      # Engine settings.
 #   cpuct: 3.1
   homemade_options:
 #   Hash: 256  
-  uci_options:               # Arbitrary UCI options passed to the engine. option name Contempt type spin : 24
-  
-option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 20
-option name Hash type spin : 32768
-option name Ponder type check : true
-option name MultiPV type spin : 1
-option name Skill Level type spin : 20
-option name Move Overhead type spin : 5000
-option name nodestime type spin : 0
-option name UCI_Chess960 type check : false
-option name UCI_AnalyseMode type check : false
-option name UCI_LimitStrength type check : false
-option name UCI_Elo type spin : 2850
-option name UCI_ShowWDL type check : false
-option name SyzygyPath type string : ./engines/Syzygy_tablebase
-option name SyzygyProbeDepth type spin : 100
-option name Syzygy50MoveRule type check : true
-option name SyzygyProbeLimit type spin : 7
-option name Use NNUE type check : true
+  uci_options:               # Arbitrary UCI options passed to the engine.
+    Move Overhead: 100       # Increase if your bot flags games too often.
+    Threads: 512             # Max CPU threads the engine can use.
+    Hash: 131072             # Max memory (in megabytes) the engine can allocate.
+    Use NNUE: true           # allow bot to use neural networks
+    SyzygyPath: ./engines/Syzygy_tablebase
+    SyzygyProbeDepth: 50
+    Syzygy50MoveRule: true
+    SyzygyProbeLimit: 6
+    Skill Level: 20
+    UCI_ShowWDL: false
+    UCI_Variant type combo:  chess var chess var giveaway var atomic var crazyhouse var horde var kingofthehill var racingkings var 3check
+    Debug Log File type string: default
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
