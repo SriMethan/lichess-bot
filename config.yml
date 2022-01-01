@@ -69,7 +69,7 @@ engine:                      # Engine settings.
 # xboard_options:            # Arbitrary XBoard options passed to the engine.
 #   cores: "4"
 #   memory: "4096"
-#   egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
+    egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
 #     scorpio: "Scorpio Path"
