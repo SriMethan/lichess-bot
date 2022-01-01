@@ -68,7 +68,6 @@ engine:                      # Engine settings.
     SyzygyProbeLimit: 6
     Skill Level: 20
     UCI_ShowWDL: false
-    UCI_Variant type combo:  chess var chess var giveaway var atomic var crazyhouse var horde var kingofthehill var racingkings var 3check
     Debug Log File type string: true
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
