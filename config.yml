@@ -68,7 +68,6 @@ engine:                      # Engine settings.
     SyzygyProbeLimit: 6
     Skill Level: 20
     UCI_ShowWDL: false
-    Debug Log File type string: true
     UCI_Elo  : 2850
     TsumeMode: true
 #   go_commands:             # Additional options to pass to the UCI go command.
