@@ -66,6 +66,10 @@ engine:                      # Engine settings.
     SyzygyProbeDepth: 50
     Syzygy50MoveRule: true
     SyzygyProbeLimit: 7
+    nodestime: 10000
+    UCI_AnalyseMode: true
+    TsumeMode: true
+    Skill Level: 20
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
