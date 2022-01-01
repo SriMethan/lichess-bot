@@ -70,6 +70,7 @@ engine:                      # Engine settings.
     UCI_AnalyseMode: true
     TsumeMode: true
     Skill Level: 20
+    UCI_ShowWDL: false
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
@@ -77,11 +78,11 @@ engine:                      # Engine settings.
 # xboard_options:            # Arbitrary XBoard options passed to the engine.
 #   cores: "4"
 #   memory: "4096"
-    egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
+#   egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
 #     scorpio: "Scorpio Path"
-      syzygy: "./engines/Syzygy_tablebase"
+#     syzygy: "./engines/Syzygy_tablebase"
 #   go_commands:             # Additional options to pass to the XBoard go command.
 #     depth: 5               # Search depth ply only.
 #     Do note that the go commands 'movetime' and 'nodes' are invalid and may cause bad time management for XBoard engines.
