@@ -67,8 +67,6 @@ engine:                      # Engine settings.
     Syzygy50MoveRule: true
     SyzygyProbeLimit: 7
     nodestime: 10000
-    UCI_AnalyseMode: true
-    TsumeMode: true
     Skill Level: 20
     UCI_ShowWDL: false
 #   go_commands:             # Additional options to pass to the UCI go command.
