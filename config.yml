@@ -62,6 +62,10 @@ engine:                      # Engine settings.
     Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
+    SyzygyPath: ./engines/Syzygy_tablebase
+    SyzygyProbeDepth: 50
+    Syzygy50MoveRule: true
+    SyzygyProbeLimit: 7
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
