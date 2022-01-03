@@ -26,8 +26,7 @@ Engine communication code taken from https://github.com/ShailChoksi/lichess-bot 
 -  Engine      [Stockfish  (dev)](https://abrok.eu/stockfish/builds/ad357e147a1b8481a04761d726ce1db14115a68f/linux64modern/stockfish_21082721_x64_modern.zip) 
 -  Using standard book [Cerebellum3Merge.bin](https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z)
 -  using antichess book [bestanti](https://github.com/codingforhelp/Lichess-Dev-Bot/raw/main/engines/antibest.bin)
--  using books other all variants too!
--  Use nnue for all variants 
+-  using books other all variants too! 
 
 # lichess-bot
 - A bridge between [Lichess API](https://lichess.org/account/oauth/token/create?scopes%5B%5D=bot:play&description=Lichess+Bot+Token) and bots.
