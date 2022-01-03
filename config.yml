@@ -50,7 +50,6 @@ engine:                      # Engine settings.
     Skill Level: 20
     UCI_ShowWDL: false
     UCI_Elo  : 2850
-    TsumeMode: true
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
