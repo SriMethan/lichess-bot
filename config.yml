@@ -27,8 +27,6 @@ engine:                      # Engine settings.
         - KingOfTheHill.bin
       racingking:               # List of book file paths for variant racingking
         - racingKings.bin
-      chess960:                 # List of book file paths for variant chess960
-        - Cerebellum3Merge.bin
 #     etc.
 #     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
     min_weight: 100            # Does not select moves with weight below min_weight (min 0, max: 65535).
