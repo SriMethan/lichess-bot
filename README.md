@@ -1,25 +1,26 @@
-[![Python Build](https://github.com/codingforhelp/Lichess-Bot-stronge/actions/workflows/python-build.yml/badge.svg)](https://github.com/codingforhelp/Lichess-Bot-stronge/actions/workflows/python-build.yml)
+# Lichess-Bot
 
-## using languages
+[![Python Build](https://github.com/codingforhelp/Lichess-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/codingforhelp/Lichess-Bot/actions/workflows/python-build.yml)
+
+## Using languages
 
 ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=ffffff)
-![C++](https://img.shields.io/badge/-C++-00599C?logo=c%2b%2b&logoColor=ffffff)
-![Java](https://img.shields.io/badge/-Java-007396?logo=Java&logoColor=000000)
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?&logo=javascript&logoColor=000000)
+![Docker](https://img.shields.io/badge/-docker-00599C?logo=docker%2b%2b&logoColor=ffffff)
 
-## using apps
+## Using Softwares
 
 ![VS Code](https://img.shields.io/badge/VSCode-%23007ACC?logo=Visual-studio-code)
 ![Pycharm](https://img.shields.io/badge/PyCharm-green?logo=PyCharm)
 ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=000000)
 
 # MAINTAINERS 
-- [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [drrespectable](https://lichess.org/@/drrespectable)
+- [Drdisrespect1](https://lichess.org/@/drdisrespect1) and [Drrespectable](https://lichess.org/@/drrespectable)
 
 
 # lichess-bot
 
-Engine communication code taken from https://github.com/ShailChoksi/lichess-bot by [ShailChoksi](https://github.com/ShailChoksi)
+- A bridge between [Lichess API](https://lichess.org/account/oauth/token/create?scopes%5B%5D=bot:play&description=Lichess+Bot+Token) and bots.
+- This bot is made with Python and it is running using stack container and is concentrated on heroku.
 
 ### Bot Information
 
@@ -27,10 +28,6 @@ Engine communication code taken from https://github.com/ShailChoksi/lichess-bot 
 -  Using standard book [Cerebellum3Merge.bin](https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z)
 -  using antichess book [bestanti](https://github.com/codingforhelp/Lichess-Dev-Bot/raw/main/engines/antibest.bin)
 -  using books other all variants too! 
-
-# lichess-bot
-- A bridge between [Lichess API](https://lichess.org/account/oauth/token/create?scopes%5B%5D=bot:play&description=Lichess+Bot+Token) and bots.
-- This bot is made with Python and it is running using stack container and is concentrated on heroku.
 
 ## How to Install on Heroku
 - Import or [Fork](https://github.com/LichessBot-Coders/Lichess-Coded-Bots/fork) this repository to your Github.
