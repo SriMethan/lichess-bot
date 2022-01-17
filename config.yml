@@ -2,8 +2,8 @@ token: "lip_97hb1STxAjnmMU8A2lZz"   # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
-  dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fsf_linux"         # Binary name of the engine to use.
+  dir: "/"          # Directory containing engines, relative to this project.
+  name: "stockfish_x64_modern"         # Binary name of the engine to use.
   sfname: "chess-engine"
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
