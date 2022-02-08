@@ -1,4 +1,4 @@
-token: "lip_97hb1STxAjnmMU8A2lZz"   # Lichess OAuth2 Token.
+token: "lip_2jxnmif26OQX3CBDBmK2"   # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
@@ -37,16 +37,12 @@ engine:                      # Engine settings.
   homemade_options:
 #   Hash: 256  
   uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 100       # Increase if your bot flags games too often.
-    Threads: 7               # Max CPU threads the engine can use.
-    Hash: 1040               # Max memory (in megabytes) the engine can allocate.
+    Move Overhead: 200       # Increase if your bot flags games too often.
+    Threads: 2               # Max CPU threads the engine can use.
+    Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
-    SyzygyPath: ./engines/Syzygy_tablebase
     SyzygyProbeDepth: 50
     Syzygy50MoveRule: true
-    SyzygyProbeLimit: 7
-    Skill Level: 20
-    UCI_ShowWDL: false
     UCI_Elo  : 2850
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
@@ -79,7 +75,7 @@ correspondence:
 challenge:                   # Incoming challenges.
   concurrency: 1             # Number of games to play simultaneously.
   sort_by: "best"            # Possible values: "best" and "first".
-  accept_bot: false          # Accepts challenges coming from other bots.
+  accept_bot: true           # Accepts challenges coming from other bots.
   only_bot: false            # Accept challenges by bots only.
   max_increment: 180         # Maximum amount of increment to accept a challenge. The max is 180. Set to 0 for no increment.
   min_increment: 0           # Minimum amount of increment to accept a challenge.
@@ -94,7 +90,7 @@ challenge:                   # Incoming challenges.
     - crazyhouse
     - horde
     - kingOfTheHill
-#   - racingKings
+    - racingKings
     - threeCheck
   time_controls:             # Time controls to accept.
     - bullet
