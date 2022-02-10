@@ -5,7 +5,7 @@ CMD echo drrespectable
 COPY . .
 
 RUN apt update > aptud.log && apt install -y wget python3 python3-pip p7zip-full > apti.log
-RUN python3 -m pip install --no-cache-dir -r requirements.txt > pip.log
+
 
 RUN apt-get update && apt-get install -y --no-install-recommends python build-essential cmake nodejs git-core uglifyjs ca-certificates default-jre-headless
 
