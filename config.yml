@@ -4,7 +4,6 @@ url: "https://lichess.org/"  # Lichess base URL.
 engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
   name: "fsf_linux"         # Binary name of the engine to use.
-  sfname: "fsf"
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
