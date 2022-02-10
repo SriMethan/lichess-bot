@@ -5,7 +5,7 @@ engine:                      # Engine settings.
   dir: "./engines/"          # Directory containing engines, relative to this project.
   name: "fsf_linux"         # Binary name of the engine to use.
   sfname: "chess-engine"
-  protocol: "uci"            # "uci" or "xboard"
+  protocol: "xboard"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
     enabled: true            # Activate polyglot book.
