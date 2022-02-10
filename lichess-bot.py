@@ -248,6 +248,7 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     move_overhead = config.get("move_overhead", 1000)
     delay_seconds = config.get("rate_limiting_delay", 0)/1000
     polyglot_cfg = engine_cfg.get("polyglot", {})
+    draw_or_resign_cfg = engine_cfg.get("draw_or_resign") or {}
 
     first_move = True
     correspondence_disconnect_time = 0
@@ -280,6 +281,20 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
                             best_move = choose_move_time(engine, board, correspondence_move_time, can_ponder)
                         else:
                             best_move = choose_move(engine, board, game, can_ponder, start_time, move_overhead)
+                            
+                         if best_move.move is None:
+                        draw_offered = check_for_draw_offer(game)
+
+                        if len(board.move_stack) < 2:
+                            best_move = choose_first_move(engine, board, draw_offered)
+                        elif is_correspondence:
+                            best_move = choose_move_time(engine, board, correspondence_move_time, can_ponder, draw_offered)
+                        else:
+                            best_move = choose_move(engine, board, game, can_ponder, draw_offered, start_time, move_overhead)
+                    move_attempted = True
+                    if best_move.resigned and len(board.move_stack) >= 2:
+                        li.resign(game.id)
+                    else:    
                     li.make_move(game.id, best_move)
                     time.sleep(delay_seconds)
                 elif is_game_over(game):
@@ -370,6 +385,108 @@ def get_book_move(board, polyglot_cfg):
             return move
 
     return None
+
+ else:
+        if draw_or_resign_cfg.get('offer_draw_enabled', False) and draw_or_resign_cfg.get('offer_draw_for_egtb_zero', True) and wdl == 0:
+            offer_draw = True
+        if draw_or_resign_cfg.get('resign_enabled', False) and draw_or_resign_cfg.get('resign_for_egtb_minus_two', True) and wdl == -2:
+            resign = True
+
+    if best_move is None:
+        best_move = get_lichess_cloud_move(li, board, game, lichess_cloud_cfg)
+
+    if best_move:
+        return chess.engine.PlayResult(chess.Move.from_uci(best_move), None, draw_offered=offer_draw, resigned=resign)
+    return chess.engine.PlayResult(None, None)
+
+
+def choose_move(engine, board, game, ponder, draw_offered, start_time, move_overhead):
+    wtime = game.state["wtime"]
+    btime = game.state["btime"]
+    pre_move_time = int((time.perf_counter_ns() - start_time) / 1000000)
+    if board.turn == chess.WHITE:
+        wtime = max(0, wtime - move_overhead - pre_move_time)
+    else:
+        btime = max(0, btime - move_overhead - pre_move_time)
+
+    logger.info("Searching for wtime {} btime {}".format(wtime, btime))
+    return engine.search_with_ponder(board, wtime, btime, game.state["winc"], game.state["binc"], ponder, draw_offered)
+
+
+def check_for_draw_offer(game):
+    return game.state.get(f'{game.opponent_color[0]}draw', False)
+
+
+def fake_thinking(config, board, game):
+    if config.get("fake_think_time") and len(board.move_stack) > 9:
+        delay = min(game.clock_initial, game.my_remaining_seconds()) * 0.015
+        accel = 1 - max(0, min(100, len(board.move_stack) - 20)) / 150
+        sleep = min(5, delay * accel)
+        time.sleep(sleep)
+
+
+def print_move_number(board):
+    logger.info("")
+    logger.info("move: {}".format(len(board.move_stack) // 2 + 1))
+
+
+def setup_board(game):
+    if game.variant_name.lower() == "chess960":
+        board = chess.Board(game.initial_fen, chess960=True)
+    elif game.variant_name == "From Position":
+        board = chess.Board(game.initial_fen)
+    else:
+        VariantBoard = find_variant(game.variant_name)
+        board = VariantBoard()
+
+    for move in game.state["moves"].split():
+        try:
+            board.push_uci(move)
+        except ValueError as e:
+            logger.debug("Ignoring illegal move {} on board {} ({})".format(move, board.fen(), e))
+
+    return board
+
+
+def is_engine_move(game, board):
+    return game.is_white == (board.turn == chess.WHITE)
+
+
+def is_game_over(game):
+    return game.state["status"] != "started"
+
+
+def tell_user_game_result(game, board):
+    winner = game.state.get('winner')
+    termination = game.state.get('status')
+
+    winning_name = game.white if winner == 'white' else game.black
+    losing_name = game.white if winner == 'black' else game.black
+
+    if winner is not None:
+        logger.info(f'{winning_name} won!')
+    elif termination == engine_wrapper.Termination.DRAW:
+        logger.info("Game ended in draw.")
+    else:
+        logger.info("Game adjourned.")
+
+    if termination == engine_wrapper.Termination.MATE:
+        logger.info('Game won by checkmate.')
+    elif termination == engine_wrapper.Termination.TIMEOUT:
+        logger.info(f'{losing_name} forfeited on time.')
+    elif termination == engine_wrapper.Termination.RESIGN:
+        logger.info(f'{losing_name} resigned.')
+    elif termination == engine_wrapper.Termination.ABORT:
+        logger.info('Game aborted.')
+    elif termination == engine_wrapper.Termination.DRAW:
+        if board.is_fifty_moves():
+            logger.info('Game drawn by 50-move rule.')
+        elif board.is_repetition():
+            logger.info('Game drawn by threefold repetition.')
+        else:
+            logger.info('Game drawn by agreement.')
+    elif termination:
+        logger.info(f'Game ended by {termination}')
 
 
 def choose_move(engine, board, game, ponder, start_time, move_overhead):
