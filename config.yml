@@ -34,7 +34,7 @@ engine:                      # Engine settings.
     max_depth: 245             # Half move max depth.
   draw_or_resign:
     resign_enabled: true
-    resign_score: -1000      # If the score is less than or equal to this value, the bot resigns (in cp).
+    resign_score: -2000      # If the score is less than or equal to this value, the bot resigns (in cp).
     resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
     resign_moves: 3          # How many moves in a row the score has to be below the resign value.
     offer_draw_enabled: true
