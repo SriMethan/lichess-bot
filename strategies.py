@@ -12,6 +12,7 @@ from engine_wrapper import EngineWrapper
 class FillerEngine:
     """
     Not meant to be an actual engine.
+
     This is only used to provide the property "self.engine"
     in "MinimalEngine" which extends "EngineWrapper"
     """
@@ -36,14 +37,16 @@ class FillerEngine:
 class MinimalEngine(EngineWrapper):
     """
     Subclass this to prevent a few random errors
+
     Even though MinimalEngine extends EngineWrapper,
     you don't have to actually wrap an engine.
+
     At minimum, just implement `search`,
     however you can also change other methods like
     `notify`, `first_search`, `get_time_control`, etc.
     """
     def __init__(self, commands, options, stderr, draw_or_resign, name=None):
-        super().__init__(commands, options, stderr, draw_or_resign)
+        super().__init__(options, draw_or_resign)
 
         self.engine_name = self.__class__.__name__ if name is None else name
 
@@ -55,6 +58,7 @@ class MinimalEngine(EngineWrapper):
     def search(self, board, time_limit, ponder, draw_offered):
         """
         The method to be implemented in your homemade engine
+
         NOTE: This method must return an instance of "chess.engine.PlayResult"
         """
         raise NotImplementedError("The search method is not implemented")
@@ -64,7 +68,9 @@ class MinimalEngine(EngineWrapper):
         The EngineWrapper class sometimes calls methods on "self.engine".
         "self.engine" is a filler property that notifies <self> 
         whenever an attribute is called.
+
         Nothing happens unless the main engine does something.
+
         Simply put, the following code is equivalent
         self.engine.<method_name>(<*args>, <**kwargs>)
         self.notify(<method_name>, <*args>, <**kwargs>)
