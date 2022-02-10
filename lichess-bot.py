@@ -1,4 +1,4 @@
-import argparse
+ariants-stimport argparse
 import chess
 from chess.variant import find_variant
 import chess.polyglot
@@ -692,13 +692,13 @@ if __name__ == "__main__":
     parser.add_argument('-l', '--logfile', help="Log file to append logs to.", default=None)
     args = parser.parse_args()
 
-    logging_level = logging.DEBUG if args.v else logging.INFO
+   logging_level = logging.DEBUG if args.v else logging.INFO
     logging.basicConfig(level=logging_level, filename=args.logfile,
                         format="%(asctime)-15s: %(message)s")
     enable_color_logging(debug_lvl=logging_level)
     logger.info(intro())
     CONFIG = load_config(args.config or "./config.yml")
-    li = lichess.Lichess(CONFIG["token"], CONFIG["url"], __version__, logging_level)
+    li = lichess.Lichess(CONFIG["token"], CONFIG["url"], __version__)
 
     user_profile = li.get_profile()
     username = user_profile["username"]
