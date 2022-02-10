@@ -248,7 +248,6 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     move_overhead = config.get("move_overhead", 1000)
     delay_seconds = config.get("rate_limiting_delay", 0)/1000
     polyglot_cfg = engine_cfg.get("polyglot", {})
-    draw_or_resign_cfg = engine_cfg.get("draw_or_resign") or {}
 
     first_move = True
     correspondence_disconnect_time = 0
@@ -281,20 +280,6 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
                             best_move = choose_move_time(engine, board, correspondence_move_time, can_ponder)
                         else:
                             best_move = choose_move(engine, board, game, can_ponder, start_time, move_overhead)
-                            
-                         if best_move.move is None:
-                        draw_offered = check_for_draw_offer(game)
-
-                        if len(board.move_stack) < 2:
-                            best_move = choose_first_move(engine, board, draw_offered)
-                        elif is_correspondence:
-                            best_move = choose_move_time(engine, board, correspondence_move_time, can_ponder, draw_offered)
-                        else:
-                            best_move = choose_move(engine, board, game, can_ponder, draw_offered, start_time, move_overhead)
-                    move_attempted = True
-                    if best_move.resigned and len(board.move_stack) >= 2:
-                        li.resign(game.id)
-                    else:    
                     li.make_move(game.id, best_move)
                     time.sleep(delay_seconds)
                 elif is_game_over(game):
@@ -385,8 +370,6 @@ def get_book_move(board, polyglot_cfg):
             return move
 
     return None
-
- 
 
 
 def choose_move(engine, board, game, ponder, start_time, move_overhead):
