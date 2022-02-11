@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 from http.client import RemoteDisconnected
 
-__version__ = "2.2.0"
+__version__ = "1.2.0"
 
 terminated = False
 
@@ -680,7 +680,7 @@ def intro():
     .  // o\
     .  || ._)  lichess-bot %s
     .  //__\
-    .  )___(   Play on Lichess with a bot (all variants play)
+    .  )___(   Play on Lichess with a bot
     """ % __version__
 
 

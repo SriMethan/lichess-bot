@@ -28,7 +28,7 @@ def load_config(config_file):
             elif not isinstance(CONFIG[section[0]], section[1]):
                 raise Exception(section[2])
 
-         engine_sections = [["dir", str, "´dir´ must be a string wrapped in quotes."],
+        engine_sections = [["dir", str, "´dir´ must be a string wrapped in quotes."],
                            ["name", str, "´name´ must be a string wrapped in quotes."]]
         for subsection in engine_sections:
             if subsection[0] not in CONFIG["engine"]:
