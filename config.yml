@@ -34,7 +34,7 @@ engine:                      # Engine settings.
     selection: "best_move" # Move selection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in the 2nd and 3rd case).
     max_depth: 245             # Half move max depth.
   draw_or_resign:
-    resign_enabled: true
+    resign_enabled: false
     resign_score: -2000      # If the score is less than or equal to this value, the bot resigns (in cp).
     resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
     resign_moves: 3          # How many moves in a row the score has to be below the resign value.
@@ -68,13 +68,13 @@ engine:                      # Engine settings.
   homemade_options:
 #   Hash: 256  
 #  uci_options:               # Arbitrary UCI options passed to the engine.
-#    Move Overhead: 300       # Increase if your bot flags games too often.
-#    Threads: 2               # Max CPU threads the engine can use.
-#    Hash: 256                # Max memory (in megabytes) the engine can allocate.
-#    Use NNUE: true           # allow bot to use neural networks
-#    SyzygyProbeDepth: 50
-#    Syzygy50MoveRule: true
-#    UCI_Elo  : 2850
+     Move Overhead: 300       # Increase if your bot flags games too often.
+     Threads: 2               # Max CPU threads the engine can use.
+     Hash: 256                # Max memory (in megabytes) the engine can allocate.
+     Use NNUE: true           # allow bot to use neural networks
+     SyzygyProbeDepth: 50
+     Syzygy50MoveRule: true
+     UCI_Elo  : 2850
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
