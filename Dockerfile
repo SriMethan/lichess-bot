@@ -22,14 +22,14 @@ RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/racingK
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCheck.bin" -O threeCheck.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/kingOfTheHill.bin" -O KingOfTheHill.bin
 RUN wget --no-check-certificate "https://abrok.eu/stockfish/builds/08ac4e9db5d763edb788f3b01ea5c3bac494defa/win64avx2/stockfish_22020717_x64_avx2.zip" -O chess-engine.zip
-RUN wget --no-check-certificate "https://data.stockfishchess.org/nn/nn-938525872610.nnue" -O nn-938525872610.nnue
-RUN 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
+RUN wget --no-check-certificate -nv "https://abrok.eu/stockfish/builds/7262fd5d14810b7b495b5038e348a448fda1bcc3/linux64modern/stockfish_21102807_x64_modern.zip" -O chess-engine.zip \
+&& 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
 
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 RUN chmod +x chess-engine
-RUN chmod +x ./engines/fsf_linux 
+RUN chmod +x fsf_linux
 
 
 CMD python3 run.py

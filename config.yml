@@ -2,8 +2,9 @@ token: "lip_2jxnmif26OQX3CBDBmK2"   # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
-  dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fsf_linux"         # Binary name of the engine to use.
+  dir: "./"          # Directory containing engines, relative to this project.
+  name: "chess-engine"         # Binary name of the engine to use.
+  sfname: "fsf_linux"  
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
@@ -44,20 +45,20 @@ engine:                      # Engine settings.
     offer_draw_pieces: 10    # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
   online_moves:
     chessdb_book:
-      enabled: true
+      enabled: false
       min_time: 20
       move_quality: "best"   # One of "all", "good", "best".
       min_depth: 20          # Only for move_quality: "best".
       contribute: true
     lichess_cloud_analysis:
-      enabled: true
+      enabled: false
       min_time: 20
       move_quality: "best"   # One of "good", "best".
       max_score_difference: 50 # Only for move_quality: "good". The maximum score difference (in cp) between the best move and the other moves.
       min_depth: 20
       min_knodes: 0
     online_egtb:
-      enabled: true
+      enabled: false
       min_time: 20
       max_pieces: 7
       source: "lichess"      # One of "lichess", "chessdb".
@@ -66,14 +67,14 @@ engine:                      # Engine settings.
 #   cpuct: 3.1
   homemade_options:
 #   Hash: 256  
-  uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 300       # Increase if your bot flags games too often.
-    Threads: 2               # Max CPU threads the engine can use.
-    Hash: 256                # Max memory (in megabytes) the engine can allocate.
-    Use NNUE: true           # allow bot to use neural networks
-    SyzygyProbeDepth: 50
-    Syzygy50MoveRule: true
-    UCI_Elo  : 2850
+#  uci_options:               # Arbitrary UCI options passed to the engine.
+#    Move Overhead: 300       # Increase if your bot flags games too often.
+#    Threads: 2               # Max CPU threads the engine can use.
+#    Hash: 256                # Max memory (in megabytes) the engine can allocate.
+#    Use NNUE: true           # allow bot to use neural networks
+#    SyzygyProbeDepth: 50
+#    Syzygy50MoveRule: true
+#    UCI_Elo  : 2850
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
