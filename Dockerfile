@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:stable-slim
 MAINTAINER drrespectable
 RUN echo drrespectable
 CMD echo drrespectable
