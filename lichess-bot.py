@@ -246,14 +246,7 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     engine = engine_factory()
     engine.get_opponent_info(game)
     conversation = Conversation(game, engine, li, __version__, challenge_queue)
-    
-    
-     if timep>10:
-        timep=10
-    elif timep<0.3:
-        timep=0.3
-    board = setup_board(game)
-    cfg = config["engine"]
+ 
     
     if type(board).uci_variant=="chess":
         engine_path = os.path.join(cfg["dir"], cfg["name"])
