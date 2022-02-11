@@ -1,4 +1,4 @@
-FROM   debian:stable-slim
+FROM ubuntu:latest
 MAINTAINER drrespectable
 RUN echo drrespectable
 CMD echo drrespectable
@@ -28,7 +28,6 @@ RUN 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
-RUN chmod +x chess-engine
-RUN chmod +x ./engines/fsf_linux 
+RUN chmod +x fsf_linux 
 
 CMD python3 run.py
