@@ -34,7 +34,7 @@ engine:                      # Engine settings.
     selection: "best_move" # Move selection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in the 2nd and 3rd case).
     max_depth: 245             # Half move max depth.
   draw_or_resign:
-    resign_enabled: true
+    resign_enabled: false
     resign_score: -1000      # If the score is less than or equal to this value, the bot resigns (in cp).
     resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
     resign_moves: 3          # How many moves in a row the score has to be below the resign value.
@@ -45,7 +45,7 @@ engine:                      # Engine settings.
     offer_draw_pieces: 10    # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
   online_moves:
     chessdb_book:
-      enabled: false
+      enabled: true
       min_time: 20
       move_quality: "good"   # One of "all", "good", "best".
       min_depth: 20          # Only for move_quality: "best".
@@ -68,7 +68,7 @@ engine:                      # Engine settings.
   homemade_options:
 #   Hash: 256  
   uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 300       # Increase if your bot flags games too often.
+    Move Overhead: 400       # Increase if your bot flags games too often.
     Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
@@ -133,10 +133,10 @@ challenge:                   # Incoming challenges.
     - casual                 # Unrated games.
     - rated                  # Rated games - must comment if the engine doesn't try to win.
 
-greeting:
+ greeting:
     # Optional substitution keywords (include curly braces):
     #   {opponent} to insert opponent's name
     #   {me} to insert bot's name
     # Any other words in curly braces will be removed.
-    hello: "Hi! I'm {me}. Good luck! Type !help for a list of commands I can respond to." # Message to send to chat at the start of a game
+    hello: "Hi! All the best! .  Type !help for a list of commands I can respond to." # Message to send to chat at the start of a game
     goodbye: "Good game!" # Message to send to chat at the end of a game
