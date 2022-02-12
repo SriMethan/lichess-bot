@@ -21,7 +21,7 @@ RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/horde.b
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/racingKings.bin" -O racingKings.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCheck.bin" -O threeCheck.bin
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/kingOfTheHill.bin" -O KingOfTheHill.bin
-RUN wget --no-check-certificate "https://abrok.eu/stockfish/builds/cb9c2594fcedc881ae8f8bfbfdf130cf89840e4c/win64avx2/stockfish_22021019_x64_avx2.zip" -O chess-engine.zip
+RUN wget --no-check-certificate "http://abrok.eu/stockfish/latest/linux/stockfish_x64_modern.zip" -O chess-engine.zip
 RUN wget --no-check-certificate "https://data.stockfishchess.org/nn/nn-938525872610.nnue" -O nn-938525872610.nnue
 RUN 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
 
