@@ -46,7 +46,11 @@ def load_config(config_file):
         if working_dir and not os.path.isdir(working_dir):
             raise Exception(f"Your engine's working directory `{working_dir}` is not a directory.")
 
-        engine = os.path.join(CONFIG["engine"]["dir"], CONFIG["engine"]["name"])
+          if type(board).uci_variant=="standard":
+        engine_path = os.path.join(cfg["dir"], cfg["sfname"])
+         else:
+        engine_path = os.path.join(cfg["dir"], cfg["name"])
+    engineeng = engine.SimpleEngine.popen_uci(engine_path)
 
         if not os.path.isfile(engine) and CONFIG["engine"]["protocol"] != "homemade":
             raise Exception("The engine %s file does not exist." % engine)
