@@ -47,7 +47,7 @@ engine:                      # Engine settings.
     chessdb_book:
       enabled: true
       min_time: 20
-      move_quality: "good"   # One of "all", "good", "best".
+      move_quality: "best"   # One of "all", "good", "best".
       min_depth: 20          # Only for move_quality: "best".
       contribute: true
     lichess_cloud_analysis:
@@ -133,7 +133,7 @@ challenge:                   # Incoming challenges.
     - casual                 # Unrated games.
     - rated                  # Rated games - must comment if the engine doesn't try to win.
 
- greeting:
+  greeting:
     # Optional substitution keywords (include curly braces):
     #   {opponent} to insert opponent's name
     #   {me} to insert bot's name
