@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 from http.client import RemoteDisconnected
 
-__version__ = "1.2.0"
+__version__ = "2.2.0"
 
 terminated = False
 
@@ -248,9 +248,9 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     conversation = Conversation(game, engine, li, __version__, challenge_queue)
     
     if type(board).uci_variant=="standard":
-        engine_path = os.path.join(cfg["dir"], cfg["name"])
+        engine_path = os.path.join(cfg["dir"], cfg["sfname"])
     else:
-        engine_path = os.path.join(cfg["dir"], cfg["variantname"])
+        engine_path = os.path.join(cfg["dir"], cfg["name"])
     engineeng = engine.SimpleEngine.popen_uci(engine_path)
           
 
