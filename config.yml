@@ -3,8 +3,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./"          # Directory containing engines, relative to this project.
-  name: "fsf_linux"         # Binary name of the engine to use.
-  sfname: "chess-engine"
+  name: "chess-engine"         # Binary name of the engine to use.
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
@@ -75,6 +74,7 @@ engine:                      # Engine settings.
     SyzygyProbeDepth: 50
     Syzygy50MoveRule: true
     UCI_Elo  : 2850
+    Skill Level: 20
 #   go_commands:             # Additional options to pass to the UCI go command.
 #     nodes: 1               # Search so many nodes only.
 #     depth: 5               # Search depth ply only.
