@@ -41,8 +41,9 @@ class Conversation:
             else:
                 self.send_reply(line, "No challenges queued.")
         elif command == 'draw':
-            return self.draw_message(line, "I accepted.")
-
+            if self.send.draw:
+                 self.send_reply(line, "I accepted.")
+                    
         return f'The bot offers draw at move {min_game_length} or later ' \
             f'if the eval is within +{max_score:.2f} to -{max_score:.2f} for the last {consecutive_moves} moves.'
 
