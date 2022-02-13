@@ -24,20 +24,7 @@ class Conversation:
         elif cmd == "wait" and game.is_abortable():
             game.ping(60, 120, 120)
             self.send_reply(line, "Waiting 60 seconds...")
-        elif command == 'draw':
-            return self.draw_message
-
-        if not draw_enabled:
-            return 'This bot will neither accept nor offer draws.'
-
-        min_game_length = config['engine']['offer_draw']['min_game_length']
-        max_score = config['engine']['offer_draw']['score'] / 100
-        consecutive_moves = config['engine']['offer_draw']['consecutive_moves']
-
-        return f'The bot offers draw at move {min_game_length} or later ' \
-            f'if the eval is within +{max_score:.2f} to -{max_score:.2f} for the last {consecutive_moves} moves.'
-    
-        elif cmd == "name":
+             elif cmd == "name":
             name = game.me.name
             self.send_reply(line, "{} running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
         elif cmd == "howto":
@@ -53,6 +40,20 @@ class Conversation:
                 self.send_reply(line, "Challenge queue: {}".format(challengers))
             else:
                 self.send_reply(line, "No challenges queued.")
+        elif command == 'draw':
+            return self.draw_message
+
+        if not draw_enabled:
+            return 'This bot will neither accept nor offer draws.'
+
+        min_game_length = config['engine']['offer_draw']['min_game_length']
+        max_score = config['engine']['offer_draw']['score'] / 100
+        consecutive_moves = config['engine']['offer_draw']['consecutive_moves']
+
+        return f'The bot offers draw at move {min_game_length} or later ' \
+            f'if the eval is within +{max_score:.2f} to -{max_score:.2f} for the last {consecutive_moves} moves.'
+    
+  
 
     def send_reply(self, line, reply):
         self.xhr.chat(self.game.id, line.room, reply)
