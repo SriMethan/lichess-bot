@@ -16,55 +16,6 @@ Offer_Draw = bool
 Resign = bool
             
 
-    def _format_move(self, move: chess.Move) -> str:
-        if self.board.turn:
-            move_number = str(self.board.fullmove_number) + '.'
-            return f'{move_number:4} {self.board.san(move)}'
-        else:
-            move_number = str(self.board.fullmove_number) + '...'
-            return f'{move_number:6} {self.board.san(move)}'
-
-    def _format_info(self, info: chess.engine.InfoDict) -> str:
-        info_score = info.get('score')
-        score = f'{self._format_score(info_score):7}' if info_score else 7 * ' '
-
-        info_depth = info.get('depth')
-        info_seldepth = info.get('seldepth')
-        depth_str = f'{info_depth}/{info_seldepth}'
-        depth = f'{depth_str:6}' if info_depth and info_seldepth else 6 * ' '
-
-        info_nps = info.get('nps')
-        nps = f'nps: {info_nps/1000000:4.1f} M' if info_nps else 7 * ' '
-
-        info_time = info.get('time')
-        time = f'mt: {info_time:4.1f} s' if info_time else 10 * ' '
-
-        info_hashfull = info.get('hashfull')
-        hashfull = f'hash: {info_hashfull/10:4.1f} %' if info_hashfull else 12 * ' '
-
-        info_tbhits = info.get('tbhits')
-        tbhits = f'tb: {info_tbhits}' if info_tbhits else ''
-
-        return '     '.join((score, depth, nps, time, hashfull, tbhits))
-
-    def _format_score(self, score: chess.engine.PovScore) -> str:
-        if not score.is_mate():
-            if cp_score := score.relative.score():
-                cp_score /= 100
-                return format(cp_score, '+7.2f')
-            else:
-                return '   0.00'
-        else:
-            return str(score.relative)
-
-    def _get_engine(self) -> chess.engine.SimpleEngine:
-        engine = chess.engine.SimpleEngine.popen_uci(self.config['engine']['path'])
-        options = self.config['engine']['uci_options']
-
-        def not_managed(key: str): return not chess.engine.Option(key, '', None, None, None, None).is_managed()
-        options = {key: value for key, value in options.items() if not_managed(key)}
-
-        engine.configure(options)
 
         return engine
 
