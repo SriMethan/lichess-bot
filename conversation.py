@@ -41,17 +41,7 @@ class Conversation:
             else:
                 self.send_reply(line, "No challenges queued.")
         elif command == 'draw':
-            return self.draw_message
-        
-             def _get_draw_message(self, config: dict) -> str:
-        draw_enabled = config['engine']['offer_draw']['enabled']
-
-        if not draw_enabled:
-            return 'This bot will neither accept nor offer draws.'
-
-        min_game_length = config['engine']['offer_draw']['min_game_length']
-        max_score = config['engine']['offer_draw']['score'] / 100
-        consecutive_moves = config['engine']['offer_draw']['consecutive_moves']
+            return self.draw_message(line, "I accepted.")
 
         return f'The bot offers draw at move {min_game_length} or later ' \
             f'if the eval is within +{max_score:.2f} to -{max_score:.2f} for the last {consecutive_moves} moves.'
