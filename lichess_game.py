@@ -14,22 +14,7 @@ Depth = int
 Outcome = str
 Offer_Draw = bool
 Resign = bool
-            else:
-                black_time = self.black_time - self.move_overhead if self.black_time > self.move_overhead else self.black_time
-                black_time /= 1000
-                white_time = self.white_time / 1000
-            increment = self.increment / 1000
-
-            limit = chess.engine.Limit(white_clock=white_time, white_inc=increment,
-                                       black_clock=black_time, black_inc=increment)
-            ponder = self.config['engine']['ponder']
-
-        result = self.engine.play(self.board, limit, info=chess.engine.INFO_ALL, ponder=ponder)
-        if result.move:
-            score = result.info.get('score', chess.engine.PovScore(chess.engine.Mate(1), self.board.turn))
-            self.scores.append(score)
-            return result.move, result.info
-        raise RuntimeError('Engine could not make a move!')
+            
 
     def _format_move(self, move: chess.Move) -> str:
         if self.board.turn:
