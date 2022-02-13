@@ -26,8 +26,6 @@ class Conversation:
             self.send_reply(line, "Waiting 60 seconds...")
         elif command == 'draw':
             return self.draw_message
-             def _get_draw_message(self, config: dict) -> str:
-        draw_enabled = config['engine']['offer_draw']['enabled']
 
         if not draw_enabled:
             return 'This bot will neither accept nor offer draws.'
