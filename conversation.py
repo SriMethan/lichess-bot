@@ -1,5 +1,8 @@
 import logging
 
+logger = logging.getLogger(__name__)
+
+
 class Conversation:
     def __init__(self, game, engine, xhr, version, challenge_queue):
         self.game = game
@@ -15,43 +18,32 @@ class Conversation:
         if (line.text[0] == self.command_prefix):
             self.command(line, game, line.text[1:].lower())
 
-        if command == 'cpu':
-            return self.cpu
+    def command(self, line, game, cmd):
+        if cmd == "commands" or cmd == "help":
+            self.send_reply(line, "Supported commands: !wait, !name, !howto, !eval, !queue")
+        elif cmd == "wait" and game.is_abortable():
+            game.ping(60, 120)
+            self.send_reply(line, "Waiting 60 seconds...")
+        elif cmd == "name":
+            name = game.me.name
+            self.send_reply(line, "{} running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
+        elif cmd == "howto":
+            self.send_reply(line, "How to run: Check out 'Lichess Bot API'")
+        elif cmd == "eval" and line.room == "spectator":
+            stats = self.engine.get_stats()
+            self.send_reply(line, ", ".join(stats))
+        elif cmd == "eval":
+            self.send_reply(line, "I don't tell that to my opponent, sorry.")
+        elif cmd == "queue":
+            if self.challengers:
+                challengers = ", ".join(["@" + challenger.challenger_name for challenger in reversed(self.challengers)])
+                self.send_reply(line, "Challenge queue: {}".format(challengers))
+            else:
+                self.send_reply(line, "No challenges queued.")
         elif command == 'draw':
             return self.draw_message
-        elif command == 'engine':
-            return lichess_game.engine.id["name"]
-        elif command == 'eval':
-            return lichess_game.last_message
-        elif command == 'name':
-            return f'{lichess_game.username} running {lichess_game.engine.id["name"]} (Torom\'s BotLi)'
-        elif command == 'ram':
-            return self.ram_message
-        else:
-            return 'Supported commands: !cpu, !draw, !engine, !eval, !name, !ram'
-
-    def _get_cpu(self) -> str:
-        if os.path.exists('/proc/cpuinfo'):
-            with open('/proc/cpuinfo', 'r') as cpuinfo:
-                while line := cpuinfo.readline():
-                    if line.startswith('model name'):
-                        cpu = line.split(': ')[1]
-                        cpu = cpu.replace('(R)', '')
-                        cpu = cpu.replace('(TM)', '')
-                        return cpu
-
-        if cpu := platform.processor():
-            return cpu
-
-        return 'Unknown'
-
-    def _get_ram(self) -> str:
-        mem_bytes = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')
-        mem_gib = mem_bytes/(1024.**3)
-
-        return f'{mem_gib:.1f} GiB'
-
-    def _get_draw_message(self, config: dict) -> str:
+        
+             def _get_draw_message(self, config: dict) -> str:
         draw_enabled = config['engine']['offer_draw']['enabled']
 
         if not draw_enabled:
