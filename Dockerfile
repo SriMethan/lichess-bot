@@ -31,5 +31,6 @@ RUN python3 -m pip install --no-cache-dir -r requirements.txt
 RUN chmod +x fsf_linux 
 RUN chmod +x chess-engine
 RUN chmod +x ./engines/stockfish_14_Dev
+RUN chmod +x ./engines/sf-fairy
 
 CMD python3 run.py
