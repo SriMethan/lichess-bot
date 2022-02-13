@@ -9,7 +9,11 @@ class Conversation:
         self.ram_message = self._get_ram()
         self.draw_message = self._get_draw_message(config)
 
-    def react(self, command: str, lichess_game: Lichess_Game) -> str:
+   def react(self, line, game):
+        logger.info("*** {} [{}] {}: {}".format(self.game.url(), line.room, line.username, line.text.encode("utf-8")))
+        if (line.text[0] == self.command_prefix):
+            self.command(line, game, line.text[1:].lower())
+
         if command == 'cpu':
             return self.cpu
         elif command == 'draw':
