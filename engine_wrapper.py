@@ -1,6 +1,7 @@
    
 import os
 import chess.engine
+import lichess_game
 import backoff
 import subprocess
 import logging
