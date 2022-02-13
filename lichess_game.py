@@ -16,26 +16,7 @@ Offer_Draw = bool
 Resign = bool
 
 
-class Lichess_Game:
-    def __init__(self, api: API, gameFull_event: dict, config: dict, username: str) -> None:
-        self.config = config
-        self.api = api
-        self.board = self._setup_board(gameFull_event)
-        self.username = username
-        self.is_white: bool = gameFull_event['white']['name'] == username
-        self.initial_time: int = gameFull_event['clock']['initial']
-        self.increment: int = gameFull_event['clock']['increment']
-        self.white_time: int = gameFull_event['state']['wtime']
-        self.black_time: int = gameFull_event['state']['btime']
-        self.variant = Variant(gameFull_event['variant']['key'])
-        self.draw_enabled: bool = config['engine']['offer_draw']['enabled']
-        self.resign_enabled: bool = config['engine']['resign']['enabled']
-        self.move_overhead = self._get_move_overhead()
-        self.out_of_polyglot = 0
-        self.out_of_pybook = 0
-        self.pybook_loaded = False
-        self.engine = self._get_engine()
-        self.scores: list[chess.engine.PovScore] = []
+
 
     def make_move(self) -> Tuple[UCI_Move, Offer_Draw, Resign]:
         if uci_move := self._make_pybook_move():
