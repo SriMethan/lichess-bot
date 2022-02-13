@@ -16,7 +16,7 @@ Offer_Draw = bool
 Resign = bool
 
 
-        else:
+      
             if self.is_white:
                 white_time = self.white_time - self.move_overhead if self.white_time > self.move_overhead else self.white_time
                 white_time /= 1000
