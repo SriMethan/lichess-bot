@@ -1,8 +1,6 @@
 import json
 import multiprocessing
 
-from api import API
-from chatter import Chat_Message, Chatter
 from lichess_game import Lichess_Game
 
 
