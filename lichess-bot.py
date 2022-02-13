@@ -600,17 +600,6 @@ def setup_board(game):
 
     return board
 
-def _get_move_overhead(self) -> int:
-        move_overhead = self.initial_time // 60 - self.increment
-
-        return move_overhead if move_overhead >= 0 else 0
-
-     def _reduce_own_time(self, milliseconds: int) -> None:
-        if self.is_white:
-            self.white_time -= milliseconds
-        else:
-            self.black_time -= milliseconds
-
 
 def is_engine_move(game, board):
     return game.is_white == (board.turn == chess.WHITE)
