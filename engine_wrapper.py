@@ -1,3 +1,5 @@
+nes (197 sloc)  9.72 KB
+   
 import os
 import chess.engine
 import backoff
@@ -12,7 +14,6 @@ logger = logging.getLogger(__name__)
 def create_engine(config):
     cfg = config["engine"]
     engine_path = os.path.join(cfg["dir"], cfg["name"])
-    engine_working_dir = cfg.get("working_dir") or os.getcwd()
     engine_type = cfg.get("protocol")
     engine_options = cfg.get("engine_options")
     draw_or_resign = cfg.get("draw_or_resign") or {}
@@ -33,7 +34,7 @@ def create_engine(config):
         raise ValueError(
             f"    Invalid engine type: {engine_type}. Expected xboard, uci, or homemade.")
     options = remove_managed_options(cfg.get(engine_type + "_options", {}) or {})
-    return Engine(commands, options, stderr, draw_or_resign, cwd=engine_working_dir)
+    return Engine(commands, options, stderr, draw_or_resign)
 
 
 def remove_managed_options(config):
@@ -63,7 +64,7 @@ MAX_CHAT_MESSAGE_LEN = 140  # maximum characters in a chat message
 
 
 class EngineWrapper:
-    def __init__(self, options, draw_or_resign):
+    def __init__(self, commands, options, stderr, draw_or_resign):
         self.scores = []
         self.draw_or_resign = draw_or_resign
         self.go_commands = options.pop("go_commands", {}) or {}
@@ -93,7 +94,7 @@ class EngineWrapper:
     def offer_draw_or_resign(self, result, board):
         if self.draw_or_resign.get('offer_draw_enabled', False) and len(self.scores) >= self.draw_or_resign.get('offer_draw_moves', 5):
             scores = self.scores[-self.draw_or_resign.get('offer_draw_moves', 5):]
-            pieces_on_board = chess.popcount(board.occupied)
+            pieces_on_board = len([board.piece_type_at(sq) for sq in chess.SQUARES if board.piece_type_at(sq)])
             scores_near_draw = lambda score: abs(score.relative.score(mate_score=40000)) <= self.draw_or_resign.get('offer_draw_score', 0)
             if len(scores) == len(list(filter(scores_near_draw, scores))) and pieces_on_board <= self.draw_or_resign.get('offer_draw_pieces', 10):
                 result.draw_offered = True
@@ -153,9 +154,9 @@ class EngineWrapper:
 
 
 class UCIEngine(EngineWrapper):
-    def __init__(self, commands, options, stderr, draw_or_resign, **popen_args):
-        super().__init__(options, draw_or_resign)
-        self.engine = chess.engine.SimpleEngine.popen_uci(commands, stderr=stderr, **popen_args)
+    def __init__(self, commands, options, stderr, draw_or_resign):
+        super().__init__(commands, options, stderr, draw_or_resign)
+        self.engine = chess.engine.SimpleEngine.popen_uci(commands, stderr=stderr)
         self.engine.configure(options)
 
     def stop(self):
@@ -174,9 +175,9 @@ class UCIEngine(EngineWrapper):
 
 
 class XBoardEngine(EngineWrapper):
-    def __init__(self, commands, options, stderr, draw_or_resign, **popen_args):
-        super().__init__(options, draw_or_resign)
-        self.engine = chess.engine.SimpleEngine.popen_xboard(commands, stderr=stderr, **popen_args)
+    def __init__(self, commands, options, stderr, draw_or_resign):
+        super().__init__(commands, options, stderr, draw_or_resign)
+        self.engine = chess.engine.SimpleEngine.popen_xboard(commands, stderr=stderr)
         egt_paths = options.pop("egtpath", {}) or {}
         features = self.engine.protocol.features
         egt_types_from_engine = features["egt"].split(",") if "egt" in features else []
