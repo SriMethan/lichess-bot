@@ -3,7 +3,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-lass Chatter:
+class Conversation:
     def __init__(self, config: dict) -> None:
         self.cpu = self._get_cpu()
         self.ram_message = self._get_ram()
