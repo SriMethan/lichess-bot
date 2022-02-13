@@ -63,9 +63,16 @@ class Conversation:
         return f'The bot offers draw at move {min_game_length} or later ' \
             f'if the eval is within +{max_score:.2f} to -{max_score:.2f} for the last {consecutive_moves} moves.'
 
+    def send_reply(self, line, reply):
+        self.xhr.chat(self.game.id, line.room, reply)
 
-class Chat_Message:
-    def __init__(self, chatLine_event: dict) -> None:
-        self.username: str = chatLine_event['username']
-        self.text: str = chatLine_event['text']
-        self.room: str = chatLine_event['room']
+    def send_message(self, room, message):
+        if message:
+            self.send_reply(ChatLine({"room": room}), message)
+
+
+class ChatLine:
+    def __init__(self, json):
+        self.room = json.get("room")
+        self.username = json.get("username")
+        self.text = json.get("text")
