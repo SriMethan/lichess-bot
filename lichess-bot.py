@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 from http.client import RemoteDisconnected
 
-__version__ = "1.2.0"
+__version__ = "2.2.0"
 
 terminated = False
 
@@ -633,7 +633,7 @@ if __name__ == "__main__":
     enable_color_logging(debug_lvl=logging_level)
     logger.info(intro())
     CONFIG = load_config(args.config or "./config.yml")
-    li = lichess.Lichess(CONFIG["token"], CONFIG["url"], __version__)
+    li = lichess.Lichess(CONFIG["token"], CONFIG["url"], __version__, logging_level)
 
     user_profile = li.get_profile()
     username = user_profile["username"]
