@@ -605,9 +605,6 @@ def _get_move_overhead(self) -> int:
 
         return move_overhead if move_overhead >= 0 else 0
 
-     def _has_time(self, min_time: int) -> bool:
-        return self.white_time >= min_time if self.is_white else self.black_time >= min_time
-
      def _reduce_own_time(self, milliseconds: int) -> None:
         if self.is_white:
             self.white_time -= milliseconds
