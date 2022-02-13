@@ -17,7 +17,6 @@ Resign = bool
             
 
 
-        return engine
 
     def _setup_board(self, gameFull_event: dict) -> chess.Board:
         if gameFull_event['variant']['key'] == 'chess960':
