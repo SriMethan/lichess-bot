@@ -1,15 +1,16 @@
 import logging
 
-logger = logging.getLogger(__name__)
-
-
 class Conversation:
-    def __init__(self, config: dict) -> None:
-        self.cpu = self._get_cpu()
-        self.ram_message = self._get_ram()
-        self.draw_message = self._get_draw_message(config)
+    def __init__(self, game, engine, xhr, version, challenge_queue):
+        self.game = game
+        self.engine = engine
+        self.xhr = xhr
+        self.version = version
+        self.challengers = challenge_queue
 
-   def react(self, line, game):
+    command_prefix = "!"
+
+    def react(self, line, game):
         logger.info("*** {} [{}] {}: {}".format(self.game.url(), line.room, line.username, line.text.encode("utf-8")))
         if (line.text[0] == self.command_prefix):
             self.command(line, game, line.text[1:].lower())
