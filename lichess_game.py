@@ -6,7 +6,6 @@ import chess.engine
 import chess.polyglot
 from chess.variant import find_variant
 
-from api import API
 from enums import Variant
 
 UCI_Move = str
