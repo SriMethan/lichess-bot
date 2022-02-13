@@ -36,6 +36,7 @@ class Conversation:
 
         return f'The bot offers draw at move {min_game_length} or later ' \
             f'if the eval is within +{max_score:.2f} to -{max_score:.2f} for the last {consecutive_moves} moves.'
+    
         elif cmd == "name":
             name = game.me.name
             self.send_reply(line, "{} running {} (lichess-bot v{})".format(name, self.engine.name(), self.version))
