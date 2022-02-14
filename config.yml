@@ -77,10 +77,10 @@ engine:                      # Engine settings.
     Syzygy50MoveRule: true
     UCI_Elo  : 2850
     Skill Level: 20
-#   go_commands:             # Additional options to pass to the UCI go command.
-#     nodes: 1               # Search so many nodes only.
-#     depth: 5               # Search depth ply only.
-#     movetime: 1000         # Integer. Search exactly movetime milliseconds.
+    go_commands:             # Additional options to pass to the UCI go command.
+      nodes: 1               # Search so many nodes only.
+      depth: 5               # Search depth ply only.
+      movetime: 1000         # Integer. Search exactly movetime milliseconds.
 # xboard_options:            # Arbitrary XBoard options passed to the engine.
 #   cores: "4"
 #   memory: "4096"
