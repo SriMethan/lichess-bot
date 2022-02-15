@@ -68,7 +68,7 @@ engine:                      # Engine settings.
 #   cpuct: 3.1
   homemade_options:
     Hash: 10048  
-  uci_options:               # Arbitrary UCI options passed to the engine.
+# uci_options:               # Arbitrary UCI options passed to the engine.
 #   Move Overhead: 200       # Increase if your bot flags games too often.
     Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
@@ -83,7 +83,7 @@ engine:                      # Engine settings.
 #    movetime: 1000         # Integer. Search exactly movetime milliseconds.
   xboard_options:            # Arbitrary XBoard options passed to the engine.
     cores: "4"
-    memory: "4096"
+    memory: "1024"
 #   egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
