@@ -232,8 +232,12 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     conversation = Conversation(game, engine, li, __version__, challenge_queue)
     
     
-    if type(board).uci_variant=="standard":
+    variant=game.perf_name
+
+    if variant=="standard":
         engine_path = os.path.join(cfg["dir"], cfg["sfname"])
+        engineeng = engine.SimpleEngine.popen_uci(engine_path)
+    
     
     logger.info("+++ {}".format(game))
 
