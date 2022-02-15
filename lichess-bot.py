@@ -232,9 +232,9 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     conversation = Conversation(game, engine, li, __version__, challenge_queue)
     
     
-    variant=game.perf_name
+ 
 
-    if variant=="standard":
+    if variant=="atomic":
         engine_path = os.path.join(cfg["dir"], cfg["sfname"])
         engineeng = engine.SimpleEngine.popen_uci(engine_path)
     
