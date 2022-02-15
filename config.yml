@@ -3,7 +3,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./"          # Directory containing engines, relative to this project.
-  name: "./engines/sf-fairy"         # Binary name of the engine to use.
+  name: "./engines/fsf_linux"         # Binary name of the engine to use.
   sfname: "chess-engine"
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
@@ -66,14 +66,13 @@ engine:                      # Engine settings.
       move_quality: "best"   # One of "good", "best".
 # engine_options:            # Any custom command line params to pass to the engine.
 #   cpuct: 3.1
-#  homemade_options:
+  homemade_options:
 #    Hash: 10048  
   uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 100       # Increase if your bot flags games too often.
+#   Move Overhead: 100       # Increase if your bot flags games too often.
     Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
-    EvalFile: 938525872610.nnue
     SyzygyProbeDepth: 50
     Syzygy50MoveRule: true
     UCI_Elo  : 2850
@@ -98,7 +97,7 @@ engine:                      # Engine settings.
 abort_time: 60               # Time to abort a game in seconds when there is no activity.
 fake_think_time: false       # Artificially slow down the bot to pretend like it's thinking.
 rate_limiting_delay: 0       # Time (in ms) to delay after sending a move to prevent "Too Many Requests" errors.
-move_overhead: 1500          # Increase if your bot flags games too often.
+move_overhead: 5000          # Increase if your bot flags games too often.
 
 correspondence:
     move_time: 60            # Time in seconds to search in correspondence games.
