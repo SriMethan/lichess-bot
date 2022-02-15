@@ -69,11 +69,11 @@ engine:                      # Engine settings.
 #  homemade_options:
 #    Hash: 10048  
   uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 200       # Increase if your bot flags games too often.
-    Threads: 4               # Max CPU threads the engine can use.
+    Move Overhead: 100       # Increase if your bot flags games too often.
+    Threads: 2               # Max CPU threads the engine can use.
     Hash: 256                # Max memory (in megabytes) the engine can allocate.
     Use NNUE: true           # allow bot to use neural networks
-    Evalfile: nn:938525872610.nnue
+    EvalFile: 938525872610.nnue
     SyzygyProbeDepth: 50
     Syzygy50MoveRule: true
     UCI_Elo  : 2850
@@ -114,7 +114,7 @@ challenge:                   # Incoming challenges.
   max_increment: 180         # Maximum amount of increment to accept a challenge. The max is 180. Set to 0 for no increment.
   min_increment: 0           # Minimum amount of increment to accept a challenge.
   max_base: 315360000        # Maximum amount of base time to accept a challenge. The max is 315360000 (10 years).
-  min_base: 60               # Minimum amount of base time to accept a challenge.
+  min_base: 0                # Minimum amount of base time to accept a challenge.
   variants:                  # Chess variants to accept (https://lichess.org/variant).
     - standard
 #   - fromPosition
