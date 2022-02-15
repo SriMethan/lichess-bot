@@ -3,7 +3,7 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./"          # Directory containing engines, relative to this project.
-  name: "fsf_linux"         # Binary name of the engine to use.
+  name: "chess-engine"         # Binary name of the engine to use.
   sfname: "chess-engine"
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
@@ -66,7 +66,7 @@ engine:                      # Engine settings.
       move_quality: "best"   # One of "good", "best".
 # engine_options:            # Any custom command line params to pass to the engine.
 #   cpuct: 3.1
-  homemade_options:
+#  homemade_options:
 #    Hash: 10048  
   uci_options:               # arbitrary UCI options passed to the engine
     Move Overhead: 500      # increase if your bot flags games too often
