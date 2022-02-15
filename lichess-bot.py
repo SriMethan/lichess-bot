@@ -230,7 +230,11 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     engine = engine_factory()
     engine.get_opponent_info(game)
     conversation = Conversation(game, engine, li, __version__, challenge_queue)
-
+    
+    
+    if type(board).uci_variant=="standard":
+        engine_path = os.path.join(cfg["dir"], cfg["sfname"])
+    
     logger.info("+++ {}".format(game))
 
     is_correspondence = game.perf_name == "Correspondence"
