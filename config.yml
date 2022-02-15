@@ -64,8 +64,8 @@ engine:                      # Engine settings.
       max_pieces: 7
       source: "lichess"      # One of "lichess", "chessdb".
       move_quality: "best"   # One of "good", "best".
-  engine_options:            # Any custom command line params to pass to the engine.
-    cpuct: 3.1
+# engine_options:            # Any custom command line params to pass to the engine.
+#   cpuct: 3.1
 #  homemade_options:
 #    Hash: 10048  
 # uci_options:               # Arbitrary UCI options passed to the engine.
