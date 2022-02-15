@@ -6,7 +6,7 @@ engine:                      # Engine settings.
   name: "./engines/sf-fairy"         # Binary name of the engine to use.
   sfname: "chess-engine"
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
-  protocol: "uci"            # "uci" or "xboard"
+  protocol: "xboard"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
     enabled: true            # Activate polyglot book.
@@ -77,13 +77,13 @@ engine:                      # Engine settings.
     Syzygy50MoveRule: true
     UCI_Elo  : 2850
     Skill Level: 20
-    go_commands:             # Additional options to pass to the UCI go command.
-      nodes: 100             # Search so many nodes only.
-      depth: 100             # Search depth ply only.
-#     movetime: 1000         # Integer. Search exactly movetime milliseconds.
-# xboard_options:            # Arbitrary XBoard options passed to the engine.
-#   cores: "4"
-#   memory: "4096"
+#   go_commands:             # Additional options to pass to the UCI go command.
+#    nodes: 100             # Search so many nodes only.
+#    depth: 100             # Search depth ply only.
+#    movetime: 1000         # Integer. Search exactly movetime milliseconds.
+  xboard_options:            # Arbitrary XBoard options passed to the engine.
+    cores: "4"
+    memory: "4096"
 #   egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
