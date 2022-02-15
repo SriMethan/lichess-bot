@@ -83,7 +83,7 @@ engine:                      # Engine settings.
 #    movetime: 1000         # Integer. Search exactly movetime milliseconds.
   xboard_options:            # Arbitrary XBoard options passed to the engine.
     cores: "4"
-    memory: "1024"
+    memory: "256"
 #   egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
