@@ -4,6 +4,8 @@ RUN echo drrespectable
 CMD echo drrespectable
 COPY . .
 
+RUN apt-get update && apt-get install -y wget python3 python3-pip p7zip-full
+
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
