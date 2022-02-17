@@ -7,7 +7,7 @@ make -v &> /dev/null ||apt install -y make
 g++ -v &> /dev/null || install -y build-essential
 
 # download the Stockfish source code
-wget https://github.com/ianfab/Fairy-Stockfish/archive/master.zip
+wget https://github.com/mcostalba/Stockfisharchive/master.zip
 unzip master.zip
 cd Stockfish-master/src
 
