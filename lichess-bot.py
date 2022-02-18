@@ -231,13 +231,22 @@ def play_game(li, game_id, control_queue, engine_factory, user_profile, config, 
     engine.get_opponent_info(game)
     conversation = Conversation(game, engine, li, __version__, challenge_queue)
     
-    
- 
+    board = setup_board(game)
+    cfg = config["engine"]
 
-    if variant=="atomic":
-        engine_path = os.path.join(cfg["dir"], cfg["sfname"])
-        engineeng = engine.SimpleEngine.popen_uci(engine_path)
-    
+    if type(board).uci_variant=="chess":
+        engine_path = os.path.join(cfg["dir"], cfg["name"])
+        bookname="allplay.bin"
+    elif type(board).uci_variant=="atomic":
+        engine_path = os.path.join(cfg["dir"], cfg["lcname"])
+        bookname="allplay.bin"
+    else:
+        engine_path = os.path.join(cfg["dir"], cfg["fairyname"])
+        bookname="allplay.bin"
+    engineeng = engine.SimpleEngine.popen_uci(engine_path)
+
+    logger.info("+++ {}".format(game))
+
     
     logger.info("+++ {}".format(game))
 
