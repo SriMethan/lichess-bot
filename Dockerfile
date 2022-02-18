@@ -26,8 +26,8 @@ RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCh
 RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/kingOfTheHill.bin" -O kingofthehill.bin
 
 
-RUN chmod ./engines/stockfish_14_Dev       
-RUN chmod ./engines/sf-fairy
-RUN  chmod fsf_linux
+RUN chmod +x ./engines/stockfish_14_Dev       
+RUN chmod +x ./engines/sf-fairy
+RUN chmod +x  fsf_linux
 
 CMD python3 lichess-bot.py -u
