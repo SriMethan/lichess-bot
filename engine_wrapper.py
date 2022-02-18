@@ -1,6 +1,5 @@
-   
 import os
-import chess
+import chess.engine
 from chess import engine
 import backoff
 import subprocess
