@@ -3,8 +3,8 @@ url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
   dir: "./"          # Directory containing engines, relative to this project.
-  name: "/engines/stockfish_14_Dev"        # binary name of the engine to use
-  fairyname: "/engines/sf-fairy"
+  name: "./engines/stockfish_14_Dev"        # binary name of the engine to use
+  fairyname: "./engines/sf-fairy"
   lcname: "fsf_linux"
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
