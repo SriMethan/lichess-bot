@@ -1,14 +1,9 @@
-FROM debian:stable-slim
+FROM   debian:stable-slim
+MAINTAINER drrespectable
+RUN echo drrespectable
+CMD echo drrespectable
+COPY . .
 
-ARG VERSION
-ARG MODULE
-
-ENV \
- LIBVA_DRIVERS_PATH="/usr/lib/x86_64-linux-gnu/dri" \
- LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu" \
- NVIDIA_DRIVER_CAPABILITIES="compute,video,utility" \
- NVIDIA_VISIBLE_DEVICES="all" \
- HANDBRAKE=1.5.1
 
 RUN apt-get update && apt-get install -y wget python3 python3-pip p7zip-full
 
@@ -29,4 +24,5 @@ RUN python3 -m pip install --no-cache-dir -r requirements.txt
 RUN chmod +x chess-engine
 RUN chmod +x fsf
 
-CMD python3 CMD python3 run.py
+CMD python3 run.py
+
