@@ -28,4 +28,5 @@ RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 RUN chmod +x chess-engine
 RUN chmod +x fsf
-CMD python3 lichess-bot.py
+
+CMD python3 CMD python3 run.py
