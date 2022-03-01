@@ -1,5 +1,4 @@
 FROM debian:stable-slim
-FROM lsiobase/ubuntu:focal
 
 ARG VERSION
 ARG MODULE
