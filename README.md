@@ -1,6 +1,6 @@
-# lichess-bot
-[![Python Build](https://github.com/ShailChoksi/lichess-bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/ShailChoksi/lichess-bot/actions/workflows/python-build.yml)
-[![Python Test](https://github.com/ShailChoksi/lichess-bot/actions/workflows/python-test.yml/badge.svg)](https://github.com/ShailChoksi/lichess-bot/actions/workflows/python-test.yml)
+# LICHESS BOT
+
+[![Python Build](https://github.com/codingforhelp/Lichess-Bot/actions/workflows/python-build.yml/badge.svg)](https://github.com/codingforhelp/Lichess-Bot/actions/workflows/python-build.yml)
 
 A bridge between [Lichess Bot API](https://lichess.org/api#tag/Bot) and bots.
 
