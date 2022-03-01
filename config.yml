@@ -14,20 +14,19 @@ engine:                      # Engine settings.
         - Cerebellum3Merge.bin
         - Goi5.1.bin
       antichess:                # List of book file paths for variant antichess.
-        - engines/antibest.bin
-        - antichess.bin
+        - books/antichess.bin
       atomic:                   # List of book file paths for variant atomic.
-        -  atomic.bin
+        - book/atomic.bin
       crazyhouse:               # List of book file paths for variant crazyhouse.
-        - engines/allplay.bin
+        - books/allplay.bin
       3check:                   # List of book file paths for variant 3check.
-         - threeCheck.bin
+        - books/threeCheck.bin
       horde:                    # List of book file paths for variant horde.
-        - horde.bin
+        - books/horde.bin
       kingofthehill:            # List of book file paths for variant kingofthehill
-        - KingOfTheHill.bin
+        - books/KingOfTheHill.bin
       racingking:               # List of book file paths for variant racingking
-        - racingKings.bin
+        - books/racingKings.bin
 #     etc.
 #     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
     min_weight: 100            # Does not select moves with weight below min_weight (min 0, max: 65535).
