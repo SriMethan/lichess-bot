@@ -1,3 +1,0 @@
-build:
-  docker:
-    RUN: Dockerfile
