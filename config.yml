@@ -1,79 +1,106 @@
-token: "lip_sYc7ZlCeut2nmCQbVVJI"   # Lichess OAuth2 Token.
+token: "lip_LxOdszffnb7u1m35raeW"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
-  dir: "./engines/"          # Directory containing engines, relative to this project.
-  name: "fsf_linux"         # Binary name of the engine to use.
-  sfname: "chess-engine"
+  dir: "./engines"          # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
+  name: "Developed_SF"        # Binary name of the engine to use.
+  variantname: "fsf_linux" # Variant name of the engine to use. 
+  working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
   polyglot:
-    enabled: true            # Activate polyglot book.
+    enabled: true           # Activate polyglot book.
     book:
-      standard:                 # List of book file paths for variant standard.
-        - Cerebellum3Merge.bin
-        - Goi5.1.bin
-      antichess:                # List of book file paths for variant antichess.
-        - engines/antibest.bin
-      atomic:                   # List of book file paths for variant atomic.
-        -  atomic.bin
-      crazyhouse:               # List of book file paths for variant crazyhouse.
-        - engines/allplay.bin
-      3check:                   # List of book file paths for variant 3check.
-         - threeCheck.bin
-      horde:                    # List of book file paths for variant horde.
+      standard:              # List of book file paths for variant standard.
+        - Stone.bin
+      atomic: # list of book file paths for variant atomic
+        - atomic.bin
+      antichess:
+        - antichess.bin
+      horde:
         - horde.bin
-      kingofthehill:            # List of book file paths for variant kingofthehill
-        - KingOfTheHill.bin
-      racingking:               # List of book file paths for variant racingking
+      racingkings:
         - racingKings.bin
-      chess960:                 # List of book file paths for variant chess960
-        - Cerebellum3Merge.bin
+      3check:
+        - threeCheck.bin
+      kingofthehill:
+        - kingofthehill.bin 
+#     atomic:                # List of book file paths for variant atomic.
+#       - engines/atomicbook1.bin
+#       - engines/atomicbook2.bin
 #     etc.
 #     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
     min_weight: 100            # Does not select moves with weight below min_weight (min 0, max: 65535).
     selection: "best_move" # Move selection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in the 2nd and 3rd case).
     max_depth: 245             # Half move max depth.
+  draw_or_resign:
+    resign_enabled: false
+    resign_score: -1000      # If the score is less than or equal to this value, the bot resigns (in cp).
+    resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
+    resign_moves: 3          # How many moves in a row the score has to be below the resign value.
+    offer_draw_enabled: true
+    offer_draw_score: 0      # If the absolute value of the score is less than or equal to this value, the bot offers/accepts draw (in cp).
+    offer_draw_for_egtb_zero: true # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
+    offer_draw_moves: 5      # How many moves in a row the absolute value of the score has to be below the draw value.
+    offer_draw_pieces: 10    # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
   online_moves:
     chessdb_book:
-      enabled: true
+      enabled: false
       min_time: 20
-      move_quality: "best"     # One of "all", "good", "best"
-      min_depth: 20            # Only for move_quality: "best"
+      move_quality: "good"   # One of "all", "good", "best".
+      min_depth: 20          # Only for move_quality: "best".
       contribute: true
     lichess_cloud_analysis:
       enabled: true
-      min_time: 20
-      move_quality: "best"     # One of "good", "best"
+      min_time: 120
+      move_quality: "best"   # One of "good", "best".
       max_score_difference: 50 # Only for move_quality: "good". The maximum score difference (in cp) between the best move and the other moves.
-      min_depth: 20
-      min_knodes: 0
+      min_depth: 50
+      min_knodes: 500
     online_egtb:
       enabled: true
-      min_time: 20
+      min_time: 120
       max_pieces: 7
-      source: "lichess"        # One of "lichess", "chessdb"
-      move_quality: "best"     # One of "good", "best"
+      source: "lichess"      # One of "lichess", "chessdb".
+      move_quality: "best"   # One of "good", "best".
 # engine_options:            # Any custom command line params to pass to the engine.
 #   cpuct: 3.1
   homemade_options:
-#   Hash: 256  
-  uci_options:               # Arbitrary UCI options passed to the engine.
-    Move Overhead: 50        # Increase if your bot flags games too often.
-    Threads: 2               # Max CPU threads the engine can use.
-    Hash: 256                # Max memory (in megabytes) the engine can allocate.
-    Use NNUE: true           # allow bot to use neural networks
-    SyzygyPath: ./engines/Syzygy_tablebase
-    SyzygyProbeDepth: 50
-    Syzygy50MoveRule: true
-    SyzygyProbeLimit: 7
-    Skill Level: 20
-    UCI_ShowWDL: false
-    UCI_Elo  : 2850
-#   go_commands:             # Additional options to pass to the UCI go command.
-#     nodes: 1               # Search so many nodes only.
-#     depth: 5               # Search depth ply only.
-#     movetime: 1000         # Integer. Search exactly movetime milliseconds.
+#   Hash: 256
+  uci_options:               # arbitrary UCI options passed to the engine
+ 
+option name Contempt type spin : 24
+option name Analysis Contempt type combo : Both var Off var White var Black var Both
+option name Threads type spin : 110
+option name Hash type spin : 32768
+option name Ponder type check : true
+option name MultiPV type spin : 1
+option name Skill Level type spin : 20
+option name Move Overhead type spin : 5000
+option name nodestime type spin : 0
+option name UCI_Chess960 type check : false
+option name UCI_AnalyseMode type check : false
+option name UCI_LimitStrength type check : false
+option name UCI_Elo type spin : 2850
+option name UCI_ShowWDL type check : true
+option name SyzygyPath type string : <empty>
+option name SyzygyProbeDepth type spin : 100
+option name Syzygy50MoveRule type check : true
+option name SyzygyProbeLimit type spin : 7
+option name Use NNUE type check : true
+#    go_commands:             # additional options to pass to the UCI go command
+#      nodes: 5000               # Search so many nodes only.
+#      depth: 20               # Search depth ply only.
+#      movetime: 1         # Integer. Search exactly movetime milliseconds.
+#  xboard_options:            # arbitrary xboard options passed to the engine
+#    cores: "4"
+#    memory: "4096"
+#    egtpath:                 # dir containing egtb, relative to this project
+#     gaviota: "Gaviota path"
+#     nalimov: "Nalimov Path"
+#     scorpio: "Scorpio Path"
+#     syzygy: "Syzygy Path"
+#  silence_stderr: false      # some engines (yes you, leela) are very noisy
 # xboard_options:            # Arbitrary XBoard options passed to the engine.
 #   cores: "4"
 #   memory: "4096"
@@ -81,16 +108,16 @@ engine:                      # Engine settings.
 #     gaviota: "Gaviota path"
 #     nalimov: "Nalimov Path"
 #     scorpio: "Scorpio Path"
-#     syzygy: "./engines/Syzygy_tablebase"
+#     syzygy: "Syzygy Path"
 #   go_commands:             # Additional options to pass to the XBoard go command.
 #     depth: 5               # Search depth ply only.
 #     Do note that the go commands 'movetime' and 'nodes' are invalid and may cause bad time management for XBoard engines.
-  silence_stderr: false      # Some engines (yes you, Leela) are very noisy.
+# silence_stderr: true      # Some engines (yes you, Leela) are very noisy.
 
 abort_time: 60               # Time to abort a game in seconds when there is no activity.
 fake_think_time: false       # Artificially slow down the bot to pretend like it's thinking.
 rate_limiting_delay: 0       # Time (in ms) to delay after sending a move to prevent "Too Many Requests" errors.
-move_overhead: 200           # Increase if your bot flags games too often.
+move_overhead: 400           # Increase if your bot flags games too often.
 
 correspondence:
     move_time: 60            # Time in seconds to search in correspondence games.
@@ -101,7 +128,7 @@ correspondence:
 challenge:                   # Incoming challenges.
   concurrency: 1             # Number of games to play simultaneously.
   sort_by: "best"            # Possible values: "best" and "first".
-  accept_bot: false          # Accepts challenges coming from other bots.
+  accept_bot: true          # Accepts challenges coming from other bots.
   only_bot: false            # Accept challenges by bots only.
   max_increment: 180         # Maximum amount of increment to accept a challenge. The max is 180. Set to 0 for no increment.
   min_increment: 0           # Minimum amount of increment to accept a challenge.
@@ -116,7 +143,7 @@ challenge:                   # Incoming challenges.
     - crazyhouse
     - horde
     - kingOfTheHill
-#   - racingKings
+    - racingKings
     - threeCheck
   time_controls:             # Time controls to accept.
     - bullet
@@ -127,3 +154,13 @@ challenge:                   # Incoming challenges.
   modes:                     # Game modes to accept.
     - casual                 # Unrated games.
     - rated                  # Rated games - must comment if the engine doesn't try to win.
+
+greeting:
+    # Optional substitution keywords (include curly braces):
+    #   {opponent} to insert opponent's name
+    #   {me} to insert bot's name
+    # Any other words in curly braces will be removed.
+    hello: "Hi! I'm {me}. Good luck! Type !help for a list of commands I can respond to." # Message to send to chat at the start of a game
+    goodbye: "Good game!" # Message to send to chat at the end of a game
+
+# pgn_directory: "game_records" # A directory where PGN-format records of the bot's games are kept
