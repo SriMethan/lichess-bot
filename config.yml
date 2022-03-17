@@ -1,10 +1,16 @@
-token: "lip_FQouljZd7ZSnCXZo0XJm"    # Lichess OAuth2 Token.
+token: "lip_LxOdszffnb7u1m35raeW"    # Lichess OAuth2 Token.
 url: "https://lichess.org/"  # Lichess base URL.
 
 engine:                      # Engine settings.
-  dir: "./engines"          # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "Developed_SF"        # Binary name of the engine to use.
-  variantname: "fsf_linux" # Variant name of the engine to use. 
+  dir: "./"          # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
+  name: "sf"        # Binary name of the engine to use.
+  Atomic: "msf"  # Binary name of the engine for atomic variant to use.
+  Antichess: "msf"  # Binary name of the engine for antichess variant to use.
+  Crazyhouse: "fsf"  # Binary name of the engine for crazyhouse variant to use.
+  Horde: "fsf"   # Binary name of the engine for horde variant to use.
+  King of the Hill: "fsf"   # Binary name of the engine for koth variant to use.
+  Racing Kings: "fsf"  # Binary name of the engine for racing kings variant to use.
+  Three-check: "fsf"   # Binary name of the engine for three check variant to use.
   working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
   protocol: "uci"            # "uci" or "xboard"
   ponder: true               # Think on opponent's time.
@@ -12,7 +18,16 @@ engine:                      # Engine settings.
     enabled: true           # Activate polyglot book.
     book:
       standard:              # List of book file paths for variant standard.
-        - Stone.bin
+        - alphavssf.bin
+        - Goi5.1.bin
+        - Drawkiller_EloZoom_big.bin
+        - Goi5.1.bin
+        - Perfect2021.bin
+        - tcec.bin
+        - komodo.bin
+        - elo3300.bin
+        - Cerebellum3Merge.bin
+        - lichess_torombot_2022-03-04.bin
       atomic: # list of book file paths for variant atomic
         - atomic.bin
       antichess:
@@ -71,13 +86,13 @@ engine:                      # Engine settings.
  
 option name Contempt type spin : 24
 option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 110
+option name Threads type spin : 20
 option name Hash type spin : 32768
 option name Ponder type check : true
 option name MultiPV type spin : 1
 option name Skill Level type spin : 20
 option name Move Overhead type spin : 5000
-option name nodestime type spin : 0
+option name nodestime type spin : 1000
 option name UCI_Chess960 type check : false
 option name UCI_AnalyseMode type check : false
 option name UCI_LimitStrength type check : false
@@ -117,7 +132,7 @@ option name Use NNUE type check : true
 abort_time: 60               # Time to abort a game in seconds when there is no activity.
 fake_think_time: false       # Artificially slow down the bot to pretend like it's thinking.
 rate_limiting_delay: 0       # Time (in ms) to delay after sending a move to prevent "Too Many Requests" errors.
-move_overhead: 400           # Increase if your bot flags games too often.
+#move_overhead: 50          # Increase if your bot flags games too often.
 
 correspondence:
     move_time: 60            # Time in seconds to search in correspondence games.
