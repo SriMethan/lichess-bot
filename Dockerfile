@@ -1,4 +1,4 @@
-FROM   debian:stable-slim
+FROM debian:stable-slim
 MAINTAINER Doctor
 RUN echo Doctor
 CMD echo Doctor
