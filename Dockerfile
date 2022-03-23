@@ -1,8 +1,8 @@
 FROM ubuntu:impish
 ENV DEBIAN_FRONTEND noninteractive
-MAINTAINER Kilow
-RUN echo Kilow
-CMD echo Kilow
+MAINTAINER Nimsilu
+RUN echo Torom
+CMD echo Torom
 COPY . .
 
 
@@ -15,18 +15,13 @@ RUN rm Goi5.1.bin.7z
 RUN wget --no-check-certificate "https://gitlab.com/OIVAS7572/Cerebellum3merge.bin/-/raw/master/Cerebellum3Merge.bin.7z" -O Cerebellum3Merge.bin.7z
 RUN 7z e Cerebellum3Merge.bin.7z
 RUN rm Cerebellum3Merge.bin.7z
-RUn wget --no-check-certificate "https://github.com/TheDarkGrandmaster2/masterbotheroku/raw/master/engines/lsf" -O lsf
-RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/antichess.bin" -O antichess.bin
-RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/atomic.bin" -O atomic.bin
-RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/horde.bin" -O horde.bin
-RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/racingKings.bin" -O racingKings.bin
-RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/threeCheck.bin" -O threeCheck.bin
-RUN wget --no-check-certificate "https://fbserv.herokuapp.com/file/books/kingOfTheHill.bin" -O KingOfTheHill.bin
+RUN wget --no-check-certificate "https://abrok.eu/stockfish/builds/e31f97e3baa52042fe60d6f4eeb50fe0d9e61013/linux64avx2/stockfish_22031913_x64_avx2.zip" -O chess-engine.zip
+RUN 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
 
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
-RUN chmod +x /engines/Developed_SF
+RUN chmod +x  chess-engine
 RUN chmod +x /engines/fsf_linux 
 
 CMD python3 run.py

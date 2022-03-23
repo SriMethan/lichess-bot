@@ -1,169 +1,92 @@
-token: "lip_QwvFXAz5ZU7zIqCSHhoF"    # Lichess OAuth2 Token.
-url: "https://lichess.org/"  # Lichess base URL.
+token: "lip_AuFtcqr1GH7amLnseDJN"         # Lichess OAuth2 Token.
 
-engine:                      # Engine settings.
-  dir: "./engines"          # Directory containing the engine. This can be an absolute path or one relative to lichess-bot/.
-  name: "Developed_SF"        # Binary name of the engine to use.
-  Atomic: "fsf_linux"  # Binary name of the engine for atomic variant to use.
-  Antichess: "fsf_linux"  # Binary name of the engine for antichess variant to use.
-  Crazyhouse: "fsf_linux"  # Binary name of the engine for crazyhouse variant to use.
-  Horde: "fsf_linux"   # Binary name of the engine for horde variant to use.
-  King of the Hill: "fsf_linux"   # Binary name of the engine for koth variant to use.
-  Racing Kings: "fsf_linux"  # Binary name of the engine for racing kings variant to use.
-  Three-check: "fsf_linux"   # Binary name of the engine for three check variant to use.
-  working_dir: ""            # Directory where the chess engine will read and write files. If blank or missing, the current directory is used.
-  protocol: "uci"            # "uci" or "xboard"
-  ponder: true               # Think on opponent's time.
+engine:                                   # Engine settings.
+  dir: "./"               # Directory containing the engine.
+  name: "chess-engine"        # Binary name of the engine to use.
+  ponder: true                            # Think on opponent's time.
   polyglot:
-    enabled: true           # Activate polyglot book.
-    book:
-      standard:              # List of book file paths for variant standard.
-        - Stone.bin
-      atomic: # list of book file paths for variant atomic
-        - atomic.bin
-      antichess:
-        - antichess.bin
-      horde:
-        - horde.bin
-      racingkings:
-        - racingKings.bin
-      3check:
-        - threeCheck.bin
-      kingofthehill:
-        - kingofthehill.bin 
-#     atomic:                # List of book file paths for variant atomic.
-#       - engines/atomicbook1.bin
-#       - engines/atomicbook2.bin
-#     etc.
-#     Use the same pattern for 'giveaway' (antichess), 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
-    min_weight: 100            # Does not select moves with weight below min_weight (min 0, max: 65535).
-    selection: "best_move" # Move selection is one of "weighted_random", "uniform_random" or "best_move" (but not below the min_weight in the 2nd and 3rd case).
-    max_depth: 245             # Half move max depth.
-  draw_or_resign:
-    resign_enabled: false
-    resign_score: -1000      # If the score is less than or equal to this value, the bot resigns (in cp).
-    resign_for_egtb_minus_two: true # If true the bot will resign in positions where the online_egtb returns a wdl of -2.
-    resign_moves: 3          # How many moves in a row the score has to be below the resign value.
-    offer_draw_enabled: true
-    offer_draw_score: 0      # If the absolute value of the score is less than or equal to this value, the bot offers/accepts draw (in cp).
-    offer_draw_for_egtb_zero: true # If true the bot will offer/accept draw in positions where the online_egtb returns a wdl of 0.
-    offer_draw_moves: 5      # How many moves in a row the absolute value of the score has to be below the draw value.
-    offer_draw_pieces: 10    # Only if the pieces on board are less than or equal to this value, the bot offers/accepts draw.
+    enabled: true                         # Activate polyglot book.
+    books:
+      white: "Goi5.1.bin"                      # Name of the book to use as white.
+      black: "elo3300"                         # Name of the book to use as black.
+      standard: null            # Name of the book to use if there is no specific book for white, black or chess960.
+      chess960: null                      # Name of the book to use for Chess960.
+    selection: "best_move"                # Move selection is one of "weighted_random", "uniform_random" or "best_move".
+  pybook:
+    enabled: false                        # Activate pybook.
+    book: "/path/to/pybook"               # Path to pybook.
   online_moves:
-    chessdb_book:
-      enabled: false
-      min_time: 20
-      move_quality: "good"   # One of "all", "good", "best".
-      min_depth: 20          # Only for move_quality: "best".
-      contribute: true
-    lichess_cloud_analysis:
-      enabled: true
-      min_time: 120
-      move_quality: "best"   # One of "good", "best".
-      max_score_difference: 50 # Only for move_quality: "good". The maximum score difference (in cp) between the best move and the other moves.
-      min_depth: 50
-      min_knodes: 500
+    chessdb:
+      enabled: false                      # Activate online moves from https://chessdb.cn/queryc_en/
+      min_depth: 20                       # Minimum evaluation depth.
+      min_time: 40                        # Time the bot must have at least to use the online move.
+      timeout: 5                          # Time the server has to respond.
+    lichess_cloud:
+      enabled: false                       # Activate online moves from Lichess cloud eval.
+      min_depth: 20                       # Minimum evaluation depth.
+      min_time: 40                        # Time the bot must have at least to use the online move.
+      timeout: 5                          # Time the server has to respond.
     online_egtb:
-      enabled: true
-      min_time: 120
-      max_pieces: 7
-      source: "lichess"      # One of "lichess", "chessdb".
-      move_quality: "best"   # One of "good", "best".
-# engine_options:            # Any custom command line params to pass to the engine.
-#   cpuct: 3.1
-  homemade_options:
-#   Hash: 256
-  uci_options:               # arbitrary UCI options passed to the engine
- 
-option name Contempt type spin : 24
-option name Analysis Contempt type combo : Both var Off var White var Black var Both
-option name Threads type spin : 225
-option name Hash type spin : 30000
-option name Ponder type check : true
-option name MultiPV type spin : 1
-option name Skill Level type spin : 20
-option name Move Overhead type spin : 5000
-option name nodestime type spin : 0
-option name UCI_Chess960 type check : false
-option name UCI_AnalyseMode type check : false
-option name UCI_LimitStrength type check : false
-option name UCI_Elo type spin : 2850
-option name UCI_ShowWDL type check : false
-option name SyzygyPath type string : <empty>
-option name SyzygyProbeDepth type spin : 100
-option name Syzygy50MoveRule type check : true
-option name SyzygyProbeLimit type spin : 7
-#    go_commands:             # additional options to pass to the UCI go command
-#      nodes: 5000               # Search so many nodes only.
-#      depth: 20               # Search depth ply only.
-#      movetime: 1         # Integer. Search exactly movetime milliseconds.
-#  xboard_options:            # arbitrary xboard options passed to the engine
-#    cores: "4"
-#    memory: "4096"
-#    egtpath:                 # dir containing egtb, relative to this project
-#     gaviota: "Gaviota path"
-#     nalimov: "Nalimov Path"
-#     scorpio: "Scorpio Path"
-#     syzygy: "Syzygy Path"
-#  silence_stderr: false      # some engines (yes you, leela) are very noisy
-# xboard_options:            # Arbitrary XBoard options passed to the engine.
-#   cores: "4"
-#   memory: "4096"
-#   egtpath:                 # Directory containing egtb (endgame tablabases), relative to this project. For 'xboard' engines.
-#     gaviota: "Gaviota path"
-#     nalimov: "Nalimov Path"
-#     scorpio: "Scorpio Path"
-#     syzygy: "Syzygy Path"
-#   go_commands:             # Additional options to pass to the XBoard go command.
-#     depth: 5               # Search depth ply only.
-#     Do note that the go commands 'movetime' and 'nodes' are invalid and may cause bad time management for XBoard engines.
-# silence_stderr: true      # Some engines (yes you, Leela) are very noisy.
-
-abort_time: 60               # Time to abort a game in seconds when there is no activity.
-fake_think_time: false       # Artificially slow down the bot to pretend like it's thinking.
-rate_limiting_delay: 0       # Time (in ms) to delay after sending a move to prevent "Too Many Requests" errors.
-correspondence:
-    move_time: 60            # Time in seconds to search in correspondence games.
-    checkin_period: 600      # How often to check for opponent moves in correspondence games after disconnecting.
-    disconnect_time: 300     # Time before disconnecting from a correspondence game.
-    ponder: false            # Ponder in correspondence games the bot is connected to.
-
-challenge:                   # Incoming challenges.
-  concurrency: 1             # Number of games to play simultaneously.
-  sort_by: "best"            # Possible values: "best" and "first".
-  accept_bot: true          # Accepts challenges coming from other bots.
-  only_bot: false            # Accept challenges by bots only.
-  max_increment: 180         # Maximum amount of increment to accept a challenge. The max is 180. Set to 0 for no increment.
-  min_increment: 0           # Minimum amount of increment to accept a challenge.
-  max_base: 315360000        # Maximum amount of base time to accept a challenge. The max is 315360000 (10 years).
-  min_base: 0                # Minimum amount of base time to accept a challenge.
-  variants:                  # Chess variants to accept (https://lichess.org/variant).
+      enabled: false                      # Activate online endgame tablebases from Lichess.
+      min_time: 10                       # Time the bot must have at least to use the online move.
+      timeout: 3                          # Time the server has to respond.
+  offer_draw:
+    enabled: true                         # Activate whether the bot should offer draw.
+    score: 5                              # If the absolute value of the score is less than or equal to this value, the bot offers/accepts draw (in cp)
+    consecutive_moves: 10                 # How many moves in a row the absolute value of the score has to be below the draw value
+    min_game_length: 50                   # Earliest move in which draw is offered.
+  resign:
+    enabled: false                        # Activate whether the bot should resign games.
+    score: -1000                          # If the score is less than or equal to this value, the bot resigns (in cp).
+    consecutive_moves: 5                  # How many moves in a row the score has to be below the resign value.
+  uci_options:                            # Arbitrary UCI options passed to the engine. (Commenting allowed)
+    Move Overhead: 300                    # Increase if your bot flags games too often.
+    Threads: 3                            # Max CPU threads the engine can use.
+    Hash: 128                             # Max memory (in megabytes) the engine can allocate.
+    MultiPV: 40
+    Skill Level: 20
+    UCI_Elo : 2850
+    Slow Mover: 70
+    
+move_overhead_multiplier: 3.0             # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
+    
+challenge:                                # Incoming challenges. (Commenting allowed)
+  concurrency: 1                          # Number of games to play simultaneously.
+  min_increment: 0                        # Minimum amount of increment to accept a challenge.
+  max_increment: 180                      # Maximum amount of increment to accept a challenge.
+  min_initial: 0                          # Minimum amount of initial time to accept a challenge.
+  max_initial: 1000                        # Maximum amount of initial time to accept a challenge.
+  variants:                               # Chess variants to accept (https://lichess.org/variant).
     - standard
-#   - fromPosition
-    - antichess
-    - atomic
     - chess960
-    - crazyhouse
-    - horde
-    - kingOfTheHill
-    - racingKings
-    - threeCheck
-  time_controls:             # Time controls to accept.
+#   - fromPosition
+#   - antichess
+#   - atomic
+#   - crazyhouse
+#   - horde
+#   - kingOfTheHill
+#   - racingKings
+#   - threeCheck
+  time_controls:                          # Time controls to accept.
     - bullet
     - blitz
     - rapid
     - classical
-#   - correspondence
-  modes:                     # Game modes to accept.
-    - casual                 # Unrated games.
-    - rated                  # Rated games - must comment if the engine doesn't try to win.
+  bot_modes:                              # Game modes to accept against BOTs.
+    - casual                              # Unrated games.
+    - rated                               # Rated games
+  human_modes:                            # Game modes to accept against humans.
+    - casual                              # Unrated games.
+    - rated                               # Rated games. 
 
-greeting:
-    # Optional substitution keywords (include curly braces):
-    #   {opponent} to insert opponent's name
-    #   {me} to insert bot's name
-    # Any other words in curly braces will be removed.
-    #hello: "Hi! I'm {me}. Good luck! Type !help for a list of commands I can respond to." # Message to send to chat at the start of a game
-    #goodbye: "Good game!" # Message to send to chat at the end of a game
+matchmaking:
+  initial_time: 30                        # Initial time for matchmaking mode.
+  increment: 0                            # Increment time for matchmaking mode.
+  rated: true                             # Activate rated games in matchmaking mode.
+  timeout: 10                             # Time until a challenge is canceled. 
+# min_rating_diff: 0                      # Minimum rating distance to opponent. (Commenting allowed)
+# max_rating_diff: 300                    # Maximum rating distance to opponent. (Commenting allowed)
 
-# pgn_directory: "game_records" # A directory where PGN-format records of the bot's games are kept
+
+books: 
+    Goi5.1: "Goi5.1.bin"  # Name of the opening book (to be used above in the polyglot section) and path to the polyglot opening book.  

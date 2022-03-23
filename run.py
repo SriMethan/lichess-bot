@@ -1,3 +1,3 @@
 import os
 
-os.system("python3 lichess-bot.py -u -v")
+os.system("python3 heroku_challenges -u -v")
