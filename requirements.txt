@@ -1,5 +1,0 @@
-chess
-psutil
-pyyaml
-requests
-tenacity
