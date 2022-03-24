@@ -1,7 +1,6 @@
 #!/bin/bash
-chmod +x engines/stockfish
-chmod +x engines/multivariant_stockfish
-chmod +x engines/fairy-sf
+chmod +x engines/Developed_SF
+chmod a+x engines/fsf_linux
 
 ### ONLY UNCOMMENT ONE START POINT ###
 
