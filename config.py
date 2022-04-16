@@ -13,6 +13,9 @@ def load_config() -> dict:
             print('There appears to be a syntax problem with your config.yml', file=sys.stderr)
             raise e
 
+        if 'LICHESS_BOT_TOKEN' in os.environ:
+            CONFIG['token'] = os.environ['LICHESS_BOT_TOKEN']
+
         # [section, type, error message]
         sections = [
             ['token', str, 'Section `token` must be a string wrapped in quotes.'],
@@ -34,9 +37,10 @@ def load_config() -> dict:
                 raise Exception(f'`engine` subsection {subsection[2]}')
 
         if not os.path.isdir(CONFIG['engine']['dir']):
-            raise Exception(f'Your engine directory `{CONFIG["engine"]["dir"]}` is not a directory.')
+            raise Exception(f'Your engine directory "{CONFIG["engine"]["dir"]}" is not a directory.')
 
         CONFIG['engine']['path'] = os.path.join(CONFIG['engine']['dir'], CONFIG['engine']['name'])
+        CONFIG['engine']['varipath'] = os.path.join(CONFIG['engine']['dir'], CONFIG['engine']['variant'])
 
         if not os.path.isfile(CONFIG['engine']['path']):
             raise Exception(f'The engine "{CONFIG["engine"]["path"]}" file does not exist.')
@@ -45,17 +49,18 @@ def load_config() -> dict:
             raise Exception(
                 f'The engine "{CONFIG["engine"]["path"]}" doesnt have execute (x) permission. Try: chmod +x {CONFIG["engine"]["path"]}')
 
-        if CONFIG['engine']['polyglot']['enabled']:
-            for key, book in CONFIG['engine']['polyglot']['books'].items():
-                if book:
+        if CONFIG['engine']['opening_books']['enabled']:
+            for key, book_list in CONFIG['engine']['opening_books']['books'].items():
+                if not isinstance(book_list, list):
+                    raise Exception(
+                        f'The `engine: opening_books: books: {key}` section must be a list of book names or commented.')
+
+                for book in book_list:
                     if book not in CONFIG['books']:
                         raise Exception(f'The book "{book}" is not defined in the books section.')
                     if not os.path.isfile(CONFIG['books'][book]):
                         raise Exception(f'The book "{book}" at "{CONFIG["books"][book]}" does not exist.')
-                    CONFIG['engine']['polyglot']['books'][key] = CONFIG['books'][book]
 
-        if CONFIG['engine']['pybook']['enabled']:
-            if not os.path.isfile(CONFIG['engine']['pybook']['book']):
-                raise Exception(f'The PyBook at "{CONFIG["engine"]["pybook"]["book"]}" does not exist.')
+                CONFIG['engine']['opening_books']['books'][key] = [CONFIG['books'][book] for book in book_list]
 
     return CONFIG
