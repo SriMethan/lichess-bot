@@ -1,15 +1,15 @@
-token: "lip_ubv6Usmcuqlkhqq40uwc"         # Lichess OAuth2 Token.
+token: "lip_arv1Z7bkUZY7uypGJBCU"         # Lichess OAuth2 Token.
 
 engine:                                   # Engine settings.
   dir: "./"                        # Directory containing the engine.
   name: "chess-engine"                       # Binary name of the engine to use.
   ponder: true                            # Think on opponent's time.
-  variant: "fairy-seen"       # Binary name of the engine to use.
+  variant: "fairy-sf"       # Binary name of the engine to use.
   opening_books:
     enabled: true                        # Activate opening books.
     books:
       white:                              # List of names of books to use as white.
-        - "cilentbook"
+        - "whitestrongest"
       black:                              # List of names of books to use as black.
         - "Cerebellum3Merge"
       standard:                           # List of names of books to use if there is no specific book for white, black or chess960.
@@ -93,4 +93,4 @@ matchmaking:
 books:                                    # Names of the opening books (to be used above in the polyglot section) and paths to the polyglot opening books.
   Goi5.1: "./Goi5.1.bin"
   Cerebellum3Merge: "./Cerebellum3Merge.bin"
-  cilentbook: "./engines/cilentbook.bin"
+  whitestrongest: "./engines/whitestrongest.bin"
