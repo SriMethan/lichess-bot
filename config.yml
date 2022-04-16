@@ -1,10 +1,10 @@
-token: "XXXXXXXXXXXXXXXXXXXXXXXX"         # Lichess OAuth2 Token.
+token: "lip_w6yY8VTnM0TsYbIzeUFl"         # Lichess OAuth2 Token.
 
 engine:                                   # Engine settings.
   dir: "./engines"                        # Directory containing the engine.
-  name: "stockfish"                       # Binary name of the engine to use.
+  name: "Developed_SF"                       # Binary name of the engine to use.
   ponder: true                            # Think on opponent's time.
-  variant: "multivariant_stockfish"       # Binary name of the engine to use.
+  variant: "fsf_linux"       # Binary name of the engine to use.
   opening_books:
     enabled: false                        # Activate opening books.
     books:
