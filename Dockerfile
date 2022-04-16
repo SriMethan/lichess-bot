@@ -18,10 +18,10 @@ Run 7z e Cerebellum3Merge.bin.7z && rm Cerebellum3Merge.bin.7z
 RUN wget --no-check-certificate "http://abrok.eu/stockfish/latest/linux/stockfish_x64_modern.zip" -O chess-engine.zip
 RUN wget --no-check-certificate "https://data.stockfishchess.org/nn/nn-938525872610.nnue" -O nn-938525872610.nnue
 RUN 7z e chess-engine.zip && rm chess-engine.zip && mv stockfish* chess-engine
-RUN wget --no-check-certificate "https://github.com/ianfab/Fairy-Stockfish/releases/download/fairy_sf_13_1/fairy-stockfish_x86-64-modern" -O fairy-seen
+RUN wget --no-check-certificate "https://github.com/codingforhelp/Lichess-Bot/raw/ROBOT/engines/fsf_linux" -O fairy-sf
  
 COPY requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 RUN chmod +x chess-engine
-RUN chmod +x fairy-seen
+RUN chmod +x fairy-sf
