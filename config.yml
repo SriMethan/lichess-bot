@@ -24,7 +24,7 @@ engine:                                   # Engine settings.
       min_time: 40                        # Time the bot must have at least to use the online move.
       timeout: 5                          # Time the server has to respond.
     lichess_cloud:
-      enabled: false                      # Activate online moves from Lichess cloud eval.
+      enabled: true                      # Activate online moves from Lichess cloud eval.
       min_depth: 10                       # Minimum evaluation depth.
       min_time: 40                        # Time the bot must have at least to use the online move.
       timeout: 5                          # Time the server has to respond.
@@ -42,12 +42,13 @@ engine:                                   # Engine settings.
     score: -1000                          # If the score is less than or equal to this value, the bot resigns (in cp).
     consecutive_moves: 5                  # How many moves in a row the score has to be below the resign value.
   uci_options:                            # Arbitrary UCI options passed to the engine. (Commenting allowed)
-    Move Overhead: 100                    # Increase if your bot flags games too often.
-    Threads: 4                            # Max CPU threads the engine can use.
-    Hash: 512                             # Max memory (in megabytes) the engine can allocate.
-#   SyzygyPath: "/path/to/syzygy"         # Path to your local syzygy endgame tablebases
+    Move Overhead: 290                    # Increase if your bot flags games too often.
+    Threads: 2                            # Max CPU threads the engine can use.
+    Hash: 256                             # Max memory (in megabytes) the engine can allocate.
+    MultiPV: 71
+    Slow Mover: 140  
 
-move_overhead_multiplier: 1.0             # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
+move_overhead_multiplier: 1.3             # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     
 challenge:                                # Incoming challenges. (Commenting allowed)
   concurrency: 1                          # Number of games to play simultaneously.
