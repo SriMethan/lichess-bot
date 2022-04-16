@@ -4,16 +4,18 @@ from typing import Iterable
 import requests
 from tenacity import retry
 from tenacity.retry import retry_if_exception_type
-from tenacity.stop import stop_after_attempt
-from tenacity.wait import wait_fixed
+from tenacity.wait import wait_exponential
 
-from enums import Challenge_Color, Decline_Reason, Variant
+from enums import Challenge_Color, Decline_Reason, Perf_Type, Variant
+from exceptions import Too_Many_Requests_Exception
 
 
 class API:
     def __init__(self, token: str) -> None:
         self.session = requests.session()
         self.session.headers.update({'Authorization': f'Bearer {token}'})
+        self.user = self.get_account()
+        self.session.headers.update({'User-Agent': f'BotLi user:{self.user["username"]}'})
 
     def abort_game(self, game_id: str) -> bool:
         try:
@@ -42,12 +44,12 @@ class API:
             print(e)
             return False
 
-    @retry(retry=retry_if_exception_type(requests.HTTPError), stop=stop_after_attempt(10), wait=wait_fixed(60))
+    @retry(retry=retry_if_exception_type(Too_Many_Requests_Exception), wait=wait_exponential(min=60, max=600))
     def create_challenge(
         self, username: str, inital_time: int, increment: int, rated: bool, color: Challenge_Color,
-            variant: Variant, timeout: int) -> str | None:
+            variant: Variant, timeout: int) -> list[dict]:
 
-        challenge_id = ''
+        challenge_lines = []
         try:
             response = self.session.post(
                 f'https://lichess.org/api/challenge/{username}',
@@ -55,31 +57,20 @@ class API:
                       'clock.limit': inital_time, 'clock.increment': increment, 'color': color.value,
                       'variant': variant.value, 'keepAliveStream': 'true'},
                 timeout=timeout, stream=True)
-            response.raise_for_status()
+
+            if response.status_code == 429:
+                print('429 - Rate limiting by Lichess')
+                raise Too_Many_Requests_Exception
 
             for line in response.iter_lines():
                 if line:
-                    line_json = json.loads(line)
-                    if 'challenge' in line_json and 'id' in line_json['challenge']:
-                        challenge_id = line_json['challenge']['id']
-                    elif 'done' in line_json and line_json['done'] == 'accepted':
-                        return challenge_id
-                    elif 'done' in line_json:
-                        return
+                    line_json = json.loads(line.decode('utf-8'))
+                    challenge_lines.append(line_json)
 
-        except requests.HTTPError as e:
-            if e.response.status_code == 400:
-                return
-            elif e.response.status_code == 429:
-                print(e)
-                raise e
-            else:
-                print(e)
-                raise RuntimeError('Unexpected status code.')
+        except requests.ConnectionError:
+            challenge_lines.append({'done': 'timeout'})
 
-        except requests.ConnectionError as e:
-            self.cancel_challenge(challenge_id)
-            return
+        return challenge_lines
 
     def decline_challenge(self, challenge_id: str, reason: Decline_Reason) -> bool:
         try:
@@ -136,6 +127,10 @@ class API:
     def get_online_bots_stream(self) -> Iterable:
         response = self.session.get('https://lichess.org/api/bot/online', stream=True)
         return response.iter_lines()
+
+    def get_perfomance(self, username: str, perf_type: Perf_Type) -> dict:
+        response = self.session.get(f'https://lichess.org/api/user/{username}/perf/{perf_type.value}')
+        return response.json()
 
     def resign_game(self, game_id: str) -> bool:
         try:
