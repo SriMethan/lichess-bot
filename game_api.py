@@ -21,6 +21,14 @@ class Game_api:
     def run_game(self) -> None:
         game_queue_thread = Thread(target=self._watch_game_stream, daemon=True)
         game_queue_thread.start()
+        
+        
+        self.api.send_chat_message(self.game_id, "player", "Hello!I like to play all variants")
+        self.api.send_chat_message(self.game_id, "player", "I wish you All the best!")
+
+        self.api.send_chat_message(self.game_id, "spectator", "Welcome to my game!")
+        self.api.send_chat_message(self.game_id, "spectator", "Thanks for watching my games!")  
+       
 
         while True:
             event = self.game_queue.get()
