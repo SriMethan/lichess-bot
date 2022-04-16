@@ -32,3 +32,34 @@ class Variant(Enum):
     KING_OF_THE_HILL = 'kingOfTheHill'
     RACING_KINGS = 'racingKings'
     THREE_CHECK = 'threeCheck'
+
+
+class Game_Status(Enum):
+    CREATED = 'created'
+    STARTED = 'started'
+    ABORTED = 'aborted'
+    MATE = 'mate'
+    RESIGN = 'resign'
+    STALEMATE = 'stalemate'
+    TIMEOUT = 'timeout'
+    DRAW = 'draw'
+    OUT_OF_TIME = 'outoftime'
+    CHEAT = 'cheat'
+    NO_START = 'noStart'
+    UNKNOWN_FINISH = 'unknownFinish'
+    VARIANT_END = 'variantEnd'
+
+
+class Perf_Type(Enum):
+    BULLET = 'bullet'
+    BLITZ = 'blitz'
+    RAPID = 'rapid'
+    CLASSICAL = 'classical'
+    ANTICHESS = 'antichess'
+    ATOMIC = 'atomic'
+    CHESS960 = 'chess960'
+    CRAZYHOUSE = 'crazyhouse'
+    HORDE = 'horde'
+    KING_OF_THE_HILL = 'kingOfTheHill'
+    RACING_KINGS = 'racingKings'
+    THREE_CHECK = 'threeCheck'
