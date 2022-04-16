@@ -7,7 +7,7 @@ import chess.polyglot
 from chess.variant import find_variant
 
 from api import API
-from enums import Variant
+from enums import Game_Status, Variant
 
 UCI_Move = str
 CP_Score = int
@@ -18,35 +18,33 @@ Resign = bool
 
 
 class Lichess_Game:
-    def __init__(self, api: API, gameFull_event: dict, config: dict, username: str) -> None:
+    def __init__(self, api: API, gameFull_event: dict, config: dict) -> None:
         self.config = config
         self.api = api
         self.board = self._setup_board(gameFull_event)
-        self.username = username
-        self.is_white: bool = gameFull_event['white'].get('name') == username
+        self.username: str = self.api.user['username']
+        self.white_name: str = gameFull_event['white'].get('name', 'AI')
+        self.black_name: str = gameFull_event['black'].get('name', 'AI')
+        self.is_white: bool = gameFull_event['white'].get('name') == self.username
         self.initial_time: int = gameFull_event['clock']['initial']
         self.increment: int = gameFull_event['clock']['increment']
         self.white_time: int = gameFull_event['state']['wtime']
         self.black_time: int = gameFull_event['state']['btime']
         self.variant = Variant(gameFull_event['variant']['key'])
+        self.status = Game_Status(gameFull_event['state']['status'])
         self.draw_enabled: bool = config['engine']['offer_draw']['enabled']
         self.resign_enabled: bool = config['engine']['resign']['enabled']
         self.move_overhead = self._get_move_overhead()
-        self.out_of_polyglot_counter = 0
-        self.out_of_pybook_counter = 0
+        self.out_of_book_counter = 0
         self.out_of_cloud_counter = 0
         self.out_of_chessdb_counter = 0
-        self.pybook_loaded = False
-        self.engine = self._get_engine()
+        self.loaded_pybooks: dict[str, dict[int, str]] = {}
+        self.engine = self._get_engine(gameFull_event)
         self.scores: list[chess.engine.PovScore] = []
+        self.last_message = 'No eval available yet.'
 
     def make_move(self) -> Tuple[UCI_Move, Offer_Draw, Resign]:
-        if uci_move := self._make_pybook_move():
-            move = chess.Move.from_uci(uci_move)
-            message = f'PyBook:  {self._format_move(move):14}'
-            offer_draw = False
-            resign = False
-        elif move := self._make_polyglot_move():
+        if move := self._make_book_move():
             message = f'Book:    {self._format_move(move):14}'
             offer_draw = False
             resign = False
@@ -82,6 +80,8 @@ class Lichess_Game:
         return move.uci(), offer_draw, resign
 
     def update(self, gameState_event: dict) -> bool:
+        self.status = Game_Status(gameState_event['status'])
+
         moves = gameState_event['moves'].split()
         if len(moves) <= len(self.board.move_stack):
             return False
@@ -91,6 +91,35 @@ class Lichess_Game:
         self.black_time = gameState_event['btime']
 
         return True
+
+    def get_result_message(self, winner: str | None) -> str:
+        winning_name = self.white_name if winner == 'white' else self.black_name
+        losing_name = self.white_name if winner == 'black' else self.black_name
+
+        if winner:
+            message = f'{winning_name} won'
+
+            if self.status == Game_Status.MATE:
+                message += ' by checkmate!'
+            elif self.status == Game_Status.OUT_OF_TIME:
+                message += f'! {losing_name} run out of time.'
+            elif self.status == Game_Status.RESIGN:
+                message += f'! {losing_name} resigned.'
+        elif self.status == Game_Status.DRAW:
+            if self.board.is_fifty_moves():
+                message = 'Game drawn by 50-move rule.'
+            elif self.board.is_repetition():
+                message = 'Game drawn by threefold repetition.'
+            elif self.board.is_insufficient_material():
+                message = 'Game drawn due to insufficient material.'
+            else:
+                message = 'Game drawn by agreement.'
+        elif self.status == Game_Status.STALEMATE:
+            message = 'Game drawn by stalemate.'
+        else:
+            message = 'Game aborted.'
+
+        return message
 
     def is_our_turn(self) -> bool:
         return self.is_white == self.board.turn
@@ -103,7 +132,7 @@ class Lichess_Game:
             self.board.is_repetition()
 
     def is_abortable(self) -> bool:
-        return self.board.ply() < 2
+        return len(self.board.move_stack) < 2
 
     def quit_engine(self) -> None:
         self.engine.quit()
@@ -143,65 +172,61 @@ class Lichess_Game:
 
         return True
 
-    def _make_polyglot_move(self) -> chess.Move | None:
-        enabled = self.config['engine']['polyglot']['enabled']
-        selection = self.config['engine']['polyglot']['selection']
-        out_of_book = self.out_of_polyglot_counter >= 10
+    def _make_book_move(self) -> chess.Move | None:
+        enabled = self.config['engine']['opening_books']['enabled']
+        selection = self.config['engine']['opening_books']['selection']
+        out_of_book = self.out_of_book_counter >= 10
 
         if not enabled or out_of_book:
             return
 
-        with chess.polyglot.open_reader(self._get_book()) as book_reader:
-            try:
-                if selection == 'weighted_random':
-                    entry = book_reader.weighted_choice(self.board)
-                elif selection == 'uniform_random':
-                    entry = book_reader.choice(self.board)
-                else:
-                    entry = book_reader.find(self.board)
-            except IndexError:
-                self.out_of_polyglot_counter += 1
-                return
+        for book in self._get_books():
+            if book.lower().endswith('.pybook'):
+                move = self._get_pybook_move(book)
+            else:
+                move = self._get_polyglot_move(book, selection)
 
-            self.out_of_polyglot_counter = 0
-            new_board = self.board.copy()
-            new_board.push(entry.move)
-            if not new_board.is_repetition(count=2):
-                return entry.move
+            if move:
+                self.out_of_book_counter = 0
+                new_board = self.board.copy()
+                new_board.push(move)
+                if not new_board.is_repetition(count=2):
+                    return move
 
-    def _get_book(self) -> str:
-        books = self.config['engine']['polyglot']['books']
+        self.out_of_book_counter += 1
 
-        if self.board.chess960 and books['chess960']:
+    def _get_books(self) -> list[str]:
+        books = self.config['engine']['opening_books']['books']
+
+        if self.board.chess960 and 'chess960' in books:
             return books['chess960']
         else:
-            if self.is_white and books['white']:
+            if self.is_white and 'white' in books:
                 return books['white']
-            elif not self.is_white and books['black']:
+            elif not self.is_white and 'black' in books:
                 return books['black']
 
-        return books['standard']
+        return books['standard'] if 'standard' in books else []
 
-    def _make_pybook_move(self) -> UCI_Move | None:
-        enabled = self.config['engine']['pybook']['enabled']
-        out_of_book = self.out_of_pybook_counter >= 10
+    def _get_pybook_move(self, book: str) -> chess.Move | None:
+        if book not in self.loaded_pybooks:
+            with open(book, 'rb') as input:
+                self.loaded_pybooks[book] = pickle.load(input)
 
-        if not enabled or out_of_book:
-            return
+        if uci_move := self.loaded_pybooks[book].get(chess.polyglot.zobrist_hash(self.board)):
+            return chess.Move.from_uci(uci_move)
 
-        if not self.pybook_loaded:
-            with open(self.config['engine']['pybook']['book'], 'rb') as input:
-                self.pybook: dict[int, str] = pickle.load(input)
-            self.pybook_loaded = True
-
-        if uci_move := self.pybook.get(chess.polyglot.zobrist_hash(self.board)):
-            self.out_of_pybook_counter = 0
-            new_board = self.board.copy()
-            new_board.push(chess.Move.from_uci(uci_move))
-            if not new_board.is_repetition(count=2):
-                return uci_move
-        else:
-            self.out_of_pybook_counter += 1
+    def _get_polyglot_move(self, book: str, selection: str) -> chess.Move | None:
+        with chess.polyglot.open_reader(book) as book_reader:
+            try:
+                if selection == 'weighted_random':
+                    return book_reader.weighted_choice(self.board).move
+                elif selection == 'uniform_random':
+                    return book_reader.choice(self.board).move
+                else:
+                    return book_reader.find(self.board).move
+            except IndexError:
+                return
 
     def _make_cloud_move(self) -> Tuple[UCI_Move, CP_Score, Depth] | None:
         enabled = self.config['engine']['online_moves']['lichess_cloud']['enabled']
@@ -264,7 +289,7 @@ class Lichess_Game:
                 self._reduce_own_time(timeout * 1000)
 
     def _make_engine_move(self) -> Tuple[chess.Move, chess.engine.InfoDict]:
-        if self.board.ply() < 2:
+        if len(self.board.move_stack) < 2:
             limit = chess.engine.Limit(time=10)
             ponder = False
         else:
@@ -330,8 +355,11 @@ class Lichess_Game:
         else:
             return str(score.pov(self.board.turn))
 
-    def _get_engine(self) -> chess.engine.SimpleEngine:
-        engine = chess.engine.SimpleEngine.popen_uci(self.config['engine']['path'])
+    def _get_engine(self, gameFull_event: dict) -> chess.engine.SimpleEngine:
+        if gameFull_event['variant']['name'] == 'Standard' or gameFull_event['variant']['name'] == 'From Position' :
+            engine = chess.engine.SimpleEngine.popen_uci(self.config['engine']['path'])
+        else:
+            engine = chess.engine.SimpleEngine.popen_uci(self.config['engine']['varipath'])      
         options = self.config['engine']['uci_options']
 
         def not_managed(key: str): return not chess.engine.Option(key, '', None, None, None, None).is_managed()
